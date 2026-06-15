@@ -1,0 +1,273 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "schema-version": "1.12.0",
+    "install": {
+      "python": {
+        "pkg-path": "python3",
+        "pkg-group": "runtime",
+        "priority": 5,
+        "version": "3.13.12",
+        "outputs": "all"
+      },
+      "torch-cuda": {
+        "pkg-path": "flox-cuda/python3Packages.torch",
+        "pkg-group": "torch-cuda",
+        "priority": 0,
+        "version": "python3.13-torch-2.10.0",
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "torch-darwin": {
+        "pkg-path": "python313Packages.torch",
+        "pkg-group": "torch-darwin",
+        "priority": 1,
+        "version": "2.10.0",
+        "systems": [
+          "aarch64-darwin"
+        ]
+      }
+    },
+    "options": {}
+  },
+  "packages": [
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/4jsnzrzl379r6cjrr836lh6vi4p4kgv4-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T07:06:30.977992Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/kwnbzccaiqi6iwdchcy6xc8br4x9hn0j-python3-3.13.12"
+      },
+      "system": "aarch64-darwin",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/5a3k0w97564gz3qxf00dvrs6yn9v8dl6-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T07:34:27.380432Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/xyg8jfgpbyap2blwfmh3lhxy1vmhhbia-python3-3.13.12-debug",
+        "out": "/nix/store/36mns0lq3c2zgky08rsq0xvamfzglzvj-python3-3.13.12"
+      },
+      "system": "aarch64-linux",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/227zjffs3h685la0wmjp42z850j2f59w-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T08:01:59.557180Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/mgd8qy2z9xj5y7lkrfw1zw2l6adanc1d-python3-3.13.12"
+      },
+      "system": "x86_64-darwin",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/akf75nmhvs2x06g2qrag3vd321rpp02i-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T08:33:14.090818Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/4q5zc1g7w4x5c0p5cdv1nh61z8ddxqqq-python3-3.13.12-debug",
+        "out": "/nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12"
+      },
+      "system": "x86_64-linux",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3Packages.torch",
+      "broken": false,
+      "derivation": "/nix/store/myjfjpc31pcif1idswiffpwsbbwxwjkb-python3.13-torch-2.10.0.drv",
+      "description": "PyTorch: Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "install_id": "torch-cuda",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "name": "python3.13-torch-2.10.0",
+      "pname": "torchWithCuda",
+      "rev": "6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "rev_count": 967235,
+      "rev_date": "2026-03-21T15:16:39Z",
+      "scrape_date": "2026-06-09T13:39:05.695595526Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3.13-torch-2.10.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "cxxdev": "/nix/store/750bf106crl7p4fnw5f2qmj2k8kdpmhx-python3.13-torch-2.10.0-cxxdev",
+        "dev": "/nix/store/ah09a043flq3d4ssr69gcly3xr3jq82p-python3.13-torch-2.10.0-dev",
+        "dist": "/nix/store/xa2ihzf7nmank01w90aw5f6gd0x89ymh-python3.13-torch-2.10.0-dist",
+        "lib": "/nix/store/19fa8v5p9n4x59v8652n7y6q9xxmqqhl-python3.13-torch-2.10.0-lib",
+        "out": "/nix/store/3yiici44dm1w5dyajp89wvvf6iw4zh7l-python3.13-torch-2.10.0"
+      },
+      "system": "aarch64-linux",
+      "group": "torch-cuda",
+      "priority": 0
+    },
+    {
+      "attr_path": "python3Packages.torch",
+      "broken": false,
+      "derivation": "/nix/store/ajyxli1a8zqr0s1nyfa1kmghzpkbf74z-python3.13-torch-2.10.0.drv",
+      "description": "PyTorch: Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "install_id": "torch-cuda",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "name": "python3.13-torch-2.10.0",
+      "pname": "torchWithCuda",
+      "rev": "6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "rev_count": 967235,
+      "rev_date": "2026-03-21T15:16:39Z",
+      "scrape_date": "2026-06-09T13:39:05.695599421Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3.13-torch-2.10.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "cxxdev": "/nix/store/3sw0gzpdwk2jp7kh4hhy69v75lzjfvdn-python3.13-torch-2.10.0-cxxdev",
+        "dev": "/nix/store/ncv0z35hl0l9qnnycbk3hrj1gmipnn4g-python3.13-torch-2.10.0-dev",
+        "dist": "/nix/store/j5722dz15mxwzv81h0amcv3py5nhwsyc-python3.13-torch-2.10.0-dist",
+        "lib": "/nix/store/rs78ghvaf9d4xf27wcd6pfl63nqz6q7d-python3.13-torch-2.10.0-lib",
+        "out": "/nix/store/qhc7ddf7zh8r35nqa37wgyphsfqf232i-python3.13-torch-2.10.0"
+      },
+      "system": "x86_64-linux",
+      "group": "torch-cuda",
+      "priority": 0
+    },
+    {
+      "attr_path": "python313Packages.torch",
+      "broken": false,
+      "derivation": "/nix/store/isxyxslzwvc60jcd97y3b121bcar1f93-python3.13-torch-2.10.0.drv",
+      "description": "PyTorch: Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "install_id": "torch-darwin",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
+      "name": "python3.13-torch-2.10.0",
+      "pname": "torch",
+      "rev": "46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
+      "rev_count": 969196,
+      "rev_date": "2026-03-24T21:09:33Z",
+      "scrape_date": "2026-03-27T03:39:23.793819Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.10.0",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "cxxdev": "/nix/store/psb34xh9h3c60vwshm2g1rhpcwfqp86w-python3.13-torch-2.10.0-cxxdev",
+        "dev": "/nix/store/9vz7vg9fgb3qqlscmgl271n1927qanjc-python3.13-torch-2.10.0-dev",
+        "dist": "/nix/store/7x3dngrj8zd709v9z57rikj5by7iiq0p-python3.13-torch-2.10.0-dist",
+        "lib": "/nix/store/82kc7vk6ym5maq3b4h2v831qzk08rg41-python3.13-torch-2.10.0-lib",
+        "out": "/nix/store/aaxmsi2wlwknwdj96fnxqd9if4hswiv5-python3.13-torch-2.10.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "torch-darwin",
+      "priority": 1
+    }
+  ]
+}

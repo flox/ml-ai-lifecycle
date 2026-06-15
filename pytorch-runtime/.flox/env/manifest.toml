@@ -1,0 +1,23 @@
+schema-version = "1.12.0"
+
+
+[install]
+python.pkg-path = "python3"
+python.version = "3.13.12"
+python.pkg-group = "runtime"
+python.priority = 5
+python.outputs = "all"
+
+# CUDA-accelerated PyTorch for Linux (x86_64 and aarch64)
+torch-cuda.pkg-path = "flox-cuda/python3Packages.torch"
+torch-cuda.pkg-group = "torch-cuda"
+torch-cuda.priority = 0
+torch-cuda.version = "python3.13-torch-2.10.0"
+torch-cuda.systems = ["aarch64-linux", "x86_64-linux"]
+
+# MPS-accelerated PyTorch for macOS
+torch-darwin.pkg-path = "python313Packages.torch"
+torch-darwin.pkg-group = "torch-darwin"
+torch-darwin.priority = 1
+torch-darwin.version = "2.10.0"
+torch-darwin.systems = ["aarch64-darwin"]

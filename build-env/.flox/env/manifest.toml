@@ -1,0 +1,40 @@
+schema-version = "1.12.0"
+
+[install]
+# core cross-platform build tools 
+bash.pkg-path = "bash"
+coreutils.pkg-path = "coreutils"
+gnumake.pkg-path = "gnumake"
+cmake.pkg-path = "cmake"
+pkg-config.pkg-path = "pkg-config"
+openssl.pkg-path = "openssl"
+cacert.pkg-path = "cacert"
+ 
+ 
+# linux: gcc toolchain + system libraries
+gcc.pkg-path = "gcc"
+gcc.systems = ["aarch64-linux", "x86_64-linux"]
+ 
+# we need gcc-unwrapped for libstdc++; it's a nixpkgs thing
+gcc-unwrapped.pkg-path = "gcc-unwrapped"
+gcc-unwrapped.priority = 3
+gcc-unwrapped.pkg-group = "libraries"
+gcc-unwrapped.systems = ["aarch64-linux", "x86_64-linux"]
+ 
+glibc.pkg-path = "glibc"
+glibc.version = "2.38-44"
+glibc.pkg-group = "glibc"
+glibc.systems = ["aarch64-linux", "x86_64-linux"]
+ 
+# macos: clang toolchain + gnu userland
+clang.pkg-path = "clang"
+clang.systems = ["x86_64-darwin", "aarch64-darwin"]
+ 
+gnused.pkg-path = "gnused"
+gnused.systems = ["x86_64-darwin", "aarch64-darwin"]
+ 
+gawk.pkg-path = "gawk"
+gawk.systems = ["x86_64-darwin", "aarch64-darwin"]
+
+libiconv.pkg-path = "libiconv"
+libiconv.systems = ["aarch64-darwin"]

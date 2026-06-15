@@ -1,0 +1,763 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "schema-version": "1.12.0",
+    "install": {
+      "cuda_cudart": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_cudart",
+        "pkg-group": "cuda",
+        "priority": 2,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_cupti": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_cupti",
+        "pkg-group": "cuda",
+        "priority": 6,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_gdb": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_gdb",
+        "pkg-group": "cuda",
+        "priority": 7,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_nvcc": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_nvcc",
+        "pkg-group": "cuda",
+        "priority": 1,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_sanitizer_api": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_sanitizer_api",
+        "pkg-group": "cuda",
+        "priority": 8,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cudatoolkit": {
+        "pkg-path": "flox-cuda/cudaPackages.cudatoolkit",
+        "pkg-group": "cuda",
+        "priority": 3,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cudnn": {
+        "pkg-path": "flox-cuda/cudaPackages.cudnn",
+        "pkg-group": "cudnn",
+        "priority": 5,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cutensor": {
+        "pkg-path": "flox-cuda/cudaPackages.cutensor",
+        "pkg-group": "cutensor",
+        "priority": 10,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "libcublas": {
+        "pkg-path": "flox-cuda/cudaPackages.libcublas",
+        "pkg-group": "cuda",
+        "priority": 4,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "nccl": {
+        "pkg-path": "flox-cuda/cudaPackages.nccl",
+        "pkg-group": "cuda",
+        "priority": 9,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      }
+    },
+    "vars": {
+      "CUDA_ENV_VERSION": "12.9"
+    },
+    "options": {}
+  },
+  "packages": [
+    {
+      "attr_path": "cudaPackages.cuda_cudart",
+      "broken": false,
+      "derivation": "/nix/store/yagrpkgsv4bx35i9wrcb35hwmwrw4gbr-cuda12.9-cuda_cudart-12.9.79.drv",
+      "description": "CUDA Runtime",
+      "install_id": "cuda_cudart",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cudart-12.9.79",
+      "pname": "cuda_cudart",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822517825Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/sr4fldaqpm55pklmbj1q13qral10ci00-cuda12.9-cuda_cudart-12.9.79"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 2
+    },
+    {
+      "attr_path": "cudaPackages.cuda_cudart",
+      "broken": false,
+      "derivation": "/nix/store/ahjzdzb1pch721b8kagf9gdzdxlraicn-cuda12.9-cuda_cudart-12.9.79.drv",
+      "description": "CUDA Runtime",
+      "install_id": "cuda_cudart",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cudart-12.9.79",
+      "pname": "cuda_cudart",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822525085Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/bic0rkmn4rdsy8nx2za8wldq46dnbaj3-cuda12.9-cuda_cudart-12.9.79"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 2
+    },
+    {
+      "attr_path": "cudaPackages.cuda_cupti",
+      "broken": false,
+      "derivation": "/nix/store/bz29c730v1ckxbx57wlik9sl9mw6fp0m-cuda12.9-cuda_cupti-12.9.79.drv",
+      "description": "C-based interface for creating profiling and tracing tools designed for CUDA applications",
+      "install_id": "cuda_cupti",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cupti-12.9.79",
+      "pname": "cuda_cupti",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822526878Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/k8mvlb3qb66pk0gwyyvwkks16j69r28b-cuda12.9-cuda_cupti-12.9.79-dev",
+        "include": "/nix/store/j1y6gdz0z4286rlsmss7jp4qlswi4129-cuda12.9-cuda_cupti-12.9.79-include",
+        "lib": "/nix/store/cpf1kmgcr3p6hzincapgnb5fs5d9qpjm-cuda12.9-cuda_cupti-12.9.79-lib",
+        "out": "/nix/store/dpiiv8p88kmzg9jlmrrmlgw85psqx3si-cuda12.9-cuda_cupti-12.9.79",
+        "samples": "/nix/store/yyq1rj2iq32z01w3dpbs973jrww2ali0-cuda12.9-cuda_cupti-12.9.79-samples"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 6
+    },
+    {
+      "attr_path": "cudaPackages.cuda_cupti",
+      "broken": false,
+      "derivation": "/nix/store/h2h02bg65018xlssiqvbmswz0c22qs8c-cuda12.9-cuda_cupti-12.9.79.drv",
+      "description": "C-based interface for creating profiling and tracing tools designed for CUDA applications",
+      "install_id": "cuda_cupti",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cupti-12.9.79",
+      "pname": "cuda_cupti",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822528230Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/qckbqy80526mn2kj9ixs62hlqq9s0w19-cuda12.9-cuda_cupti-12.9.79-dev",
+        "include": "/nix/store/z565ca8rc8k4vgz3l2cj2vp0dv62rv8l-cuda12.9-cuda_cupti-12.9.79-include",
+        "lib": "/nix/store/20r8px8s2y94hrlzqsrxai63vqs1vkm4-cuda12.9-cuda_cupti-12.9.79-lib",
+        "out": "/nix/store/pkik89fxpfd9fn5p5lnfi5brykfxyrdn-cuda12.9-cuda_cupti-12.9.79",
+        "samples": "/nix/store/f60g82fnna81zfvvy44dan33zk435g6b-cuda12.9-cuda_cupti-12.9.79-samples",
+        "static": "/nix/store/gcrl4szf5zmk20wy3l846y6jp760cmdh-cuda12.9-cuda_cupti-12.9.79-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 6
+    },
+    {
+      "attr_path": "cudaPackages.cuda_gdb",
+      "broken": false,
+      "derivation": "/nix/store/d60wlk7ick0r887wqxh9nza9qy1y9sk0-cuda12.9-cuda_gdb-12.9.79.drv",
+      "description": "NVIDIA tool for debugging CUDA applications on Linux and QNX systems",
+      "install_id": "cuda_gdb",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_gdb-12.9.79",
+      "pname": "cuda_gdb",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822529302Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/y54w78f85qk4vi2kqyh8ywzidhgcvz93-cuda12.9-cuda_gdb-12.9.79-bin",
+        "out": "/nix/store/rqvgz75n4fbckr4rglbry9dvw20zzcsr-cuda12.9-cuda_gdb-12.9.79"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 7
+    },
+    {
+      "attr_path": "cudaPackages.cuda_gdb",
+      "broken": false,
+      "derivation": "/nix/store/vl7lj2mlrmcd5qxsafxb8l9x4b3kzpn6-cuda12.9-cuda_gdb-12.9.79.drv",
+      "description": "NVIDIA tool for debugging CUDA applications on Linux and QNX systems",
+      "install_id": "cuda_gdb",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_gdb-12.9.79",
+      "pname": "cuda_gdb",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822530684Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/mbgjp6ssabx7lf2lvilhz8s9d0f6ya6i-cuda12.9-cuda_gdb-12.9.79-bin",
+        "out": "/nix/store/wrrmyp23acc0ha05j2ssihbvaxpdsbas-cuda12.9-cuda_gdb-12.9.79"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 7
+    },
+    {
+      "attr_path": "cudaPackages.cuda_nvcc",
+      "broken": false,
+      "derivation": "/nix/store/lb5lqm20lib984hdn5cc6d2d4yp2r3s7-cuda12.9-cuda_nvcc-12.9.86.drv",
+      "description": "CUDA compiler driver",
+      "install_id": "cuda_nvcc",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_nvcc-12.9.86",
+      "pname": "cuda_nvcc",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822531385Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.86",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/1jnqzlp9wkw84cdsm9kg52kzvv7gkb8i-cuda12.9-cuda_nvcc-12.9.86"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 1
+    },
+    {
+      "attr_path": "cudaPackages.cuda_nvcc",
+      "broken": false,
+      "derivation": "/nix/store/63kmrj50945aix86ng5pakayvfgnjy3w-cuda12.9-cuda_nvcc-12.9.86.drv",
+      "description": "CUDA compiler driver",
+      "install_id": "cuda_nvcc",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_nvcc-12.9.86",
+      "pname": "cuda_nvcc",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822531956Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.86",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/50fi3x00m5ksrpcmc4pbkh57h9dhl8ls-cuda12.9-cuda_nvcc-12.9.86"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 1
+    },
+    {
+      "attr_path": "cudaPackages.cuda_sanitizer_api",
+      "broken": false,
+      "derivation": "/nix/store/1p0669ix1ayqfyavg6clrfhmn2bd1rsk-cuda12.9-cuda_sanitizer_api-12.9.79.drv",
+      "description": "Enables the creation of sanitizing and tracing tools that target CUDA applications",
+      "install_id": "cuda_sanitizer_api",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_sanitizer_api-12.9.79",
+      "pname": "cuda_sanitizer_api",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822532637Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "cuda12.9-cuda_sanitizer_api-12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/5z1wcrk7b7kszffyymdqnfb2b0imvdim-cuda12.9-cuda_sanitizer_api-12.9.79"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 8
+    },
+    {
+      "attr_path": "cudaPackages.cuda_sanitizer_api",
+      "broken": false,
+      "derivation": "/nix/store/g0bsj41mh0p9mknc4xkb8gk21yqqvcqy-cuda12.9-cuda_sanitizer_api-12.9.79.drv",
+      "description": "Enables the creation of sanitizing and tracing tools that target CUDA applications",
+      "install_id": "cuda_sanitizer_api",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_sanitizer_api-12.9.79",
+      "pname": "cuda_sanitizer_api",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822533548Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/fp3h70vhx9fwgw108vvyhc70x1jmjwrk-cuda12.9-cuda_sanitizer_api-12.9.79"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 8
+    },
+    {
+      "attr_path": "cudaPackages.cudatoolkit",
+      "broken": false,
+      "derivation": "/nix/store/rniph2bsaa1crgdzrjni8c6h1w3kbin6-cuda-merged-12.9.drv",
+      "description": "Wrapper substituting the deprecated runfile-based CUDA installation",
+      "install_id": "cudatoolkit",
+      "license": "CUDA Toolkit End User License Agreement (EULA)",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda-merged-12.9",
+      "pname": "cudatoolkit",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822534259Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "cuda-merged-12.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/22303nk6943hi4wx0dxw51hnkfkr1g3g-cuda-merged-12.9"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 3
+    },
+    {
+      "attr_path": "cudaPackages.cudatoolkit",
+      "broken": false,
+      "derivation": "/nix/store/ai49f3hiz97lp6sc1flqljl53jd50wr2-cuda-merged-12.9.drv",
+      "description": "Wrapper substituting the deprecated runfile-based CUDA installation",
+      "install_id": "cudatoolkit",
+      "license": "CUDA Toolkit End User License Agreement (EULA)",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda-merged-12.9",
+      "pname": "cuda-merged",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822534770Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/p49i1vrhcaw5nf2r3bwgmwfz5x8zgb14-cuda-merged-12.9"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 3
+    },
+    {
+      "attr_path": "cudaPackages.libcublas",
+      "broken": false,
+      "derivation": "/nix/store/gfyjjlhgs2m3x35fyvc77x199xhqcyif-cuda12.9-libcublas-12.9.1.4.drv",
+      "description": "CUDA Basic Linear Algebra Subroutine library",
+      "install_id": "libcublas",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-libcublas-12.9.1.4",
+      "pname": "libcublas",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822536022Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.1.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/s0s96g3zcdi3cydj9l4fj4x1g25sqmzx-cuda12.9-libcublas-12.9.1.4-dev",
+        "include": "/nix/store/h8rgjwp37wjpknhncrxb8h1xzb2594wy-cuda12.9-libcublas-12.9.1.4-include",
+        "lib": "/nix/store/crx1wmhp2idnrmxjq0fhilglyndn64kr-cuda12.9-libcublas-12.9.1.4-lib",
+        "out": "/nix/store/s74ya41wnjzbjkabyb5frqgyjjbsh1x3-cuda12.9-libcublas-12.9.1.4",
+        "static": "/nix/store/8srx80zzgndwg3zpy68i2jll886cmyvb-cuda12.9-libcublas-12.9.1.4-static",
+        "stubs": "/nix/store/yfkvrl5z9dvdbbf061hdxmdqr71dls2b-cuda12.9-libcublas-12.9.1.4-stubs"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 4
+    },
+    {
+      "attr_path": "cudaPackages.libcublas",
+      "broken": false,
+      "derivation": "/nix/store/shfbmxapalxhdixm35yr5nc9q8y6wxpa-cuda12.9-libcublas-12.9.1.4.drv",
+      "description": "CUDA Basic Linear Algebra Subroutine library",
+      "install_id": "libcublas",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-libcublas-12.9.1.4",
+      "pname": "libcublas",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822536843Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.1.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/c4zxa6xxygz5kgziq9qax981m37dcm8k-cuda12.9-libcublas-12.9.1.4-dev",
+        "include": "/nix/store/8wlyjd7hkw5rfxxpgdn5vs8pvcifyxca-cuda12.9-libcublas-12.9.1.4-include",
+        "lib": "/nix/store/n474iszgrq3ganwy2b9a35m9mv57szfd-cuda12.9-libcublas-12.9.1.4-lib",
+        "out": "/nix/store/615iwspc4qyn8ssgyz546cds78sbn0fc-cuda12.9-libcublas-12.9.1.4",
+        "static": "/nix/store/3bg9nxslqwals6s33a486glcw6c8v29f-cuda12.9-libcublas-12.9.1.4-static",
+        "stubs": "/nix/store/iljakrwfdlfvq5ficdd8cf9ymlczckmz-cuda12.9-libcublas-12.9.1.4-stubs"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 4
+    },
+    {
+      "attr_path": "cudaPackages.nccl",
+      "broken": false,
+      "derivation": "/nix/store/k96vzs862xbc0ibnanml7nvrp1x220lj-cuda12.9-nccl-2.28.7-1.drv",
+      "description": "Multi-GPU and multi-node collective communication primitives for NVIDIA GPUs",
+      "install_id": "nccl",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-nccl-2.28.7-1",
+      "pname": "nccl",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822537644Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.28.7-1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/y98ci0yd506k19564rlb95440m8533qh-cuda12.9-nccl-2.28.7-1-dev",
+        "out": "/nix/store/k0g3z8zyxcljrsnxra3xbj42r3q9crsi-cuda12.9-nccl-2.28.7-1",
+        "static": "/nix/store/5cmmaw9kisjyfnl0hin913d9jxnkc7gy-cuda12.9-nccl-2.28.7-1-static"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 9
+    },
+    {
+      "attr_path": "cudaPackages.nccl",
+      "broken": false,
+      "derivation": "/nix/store/yqd05i6da8qljjwyabydkbdlwayrbipb-cuda12.9-nccl-2.28.7-1.drv",
+      "description": "Multi-GPU and multi-node collective communication primitives for NVIDIA GPUs",
+      "install_id": "nccl",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-nccl-2.28.7-1",
+      "pname": "nccl",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822538325Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.28.7-1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/dkav1cc4d1a28x6q1yijp16y25p7l2g7-cuda12.9-nccl-2.28.7-1-dev",
+        "out": "/nix/store/2ly6phm07kvbaf5am3a7d2cvksv2bxdy-cuda12.9-nccl-2.28.7-1",
+        "static": "/nix/store/lbwghpc362hm50py51mblpj51a30x6xi-cuda12.9-nccl-2.28.7-1-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 9
+    },
+    {
+      "attr_path": "cudaPackages.cudnn",
+      "broken": false,
+      "derivation": "/nix/store/4jga4vhkgghw2d3hwq1v8i4lwvw21fcr-cuda12.9-cudnn-9.22.0.52.drv",
+      "description": "GPU-accelerated library of primitives for deep neural networks",
+      "install_id": "cudnn",
+      "license": "[ cuDNN SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cudnn-9.22.0.52",
+      "pname": "cudnn",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822542592Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "9.22.0.52",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/l2q2pacy4b03mi4xi1qrmnfvp276vzpa-cuda12.9-cudnn-9.22.0.52-dev",
+        "include": "/nix/store/8s85bkqa95bhbjdlmycaj02yz020cawg-cuda12.9-cudnn-9.22.0.52-include",
+        "lib": "/nix/store/5zhrjiiv7s45q82wk7fa5zrdzlhcs4dy-cuda12.9-cudnn-9.22.0.52-lib",
+        "out": "/nix/store/8z8nf5s00gl1r30w7v4k9shx3r22wp4m-cuda12.9-cudnn-9.22.0.52",
+        "static": "/nix/store/vpjglningysgd0i75n4dzia0c3n876n8-cuda12.9-cudnn-9.22.0.52-static"
+      },
+      "system": "aarch64-linux",
+      "group": "cudnn",
+      "priority": 5
+    },
+    {
+      "attr_path": "cudaPackages.cudnn",
+      "broken": false,
+      "derivation": "/nix/store/ha3ayahdsf34b200970s5gzx11c4wr8j-cuda12.9-cudnn-9.22.0.52.drv",
+      "description": "GPU-accelerated library of primitives for deep neural networks",
+      "install_id": "cudnn",
+      "license": "[ cuDNN SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cudnn-9.22.0.52",
+      "pname": "cudnn",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-10T19:52:45.822555631Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "9.22.0.52",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/x8k9cnllnzp7x1i32ji7j57dlssbn614-cuda12.9-cudnn-9.22.0.52-dev",
+        "include": "/nix/store/3fkhy50iyjhy4lqkz415j4ns32gx1f2g-cuda12.9-cudnn-9.22.0.52-include",
+        "lib": "/nix/store/cpd2rl4ajq36nbsi2sm8pvqmn7nb5vf8-cuda12.9-cudnn-9.22.0.52-lib",
+        "out": "/nix/store/nfcs64iqa8jvwm21kldwxi6rd2yn8z0c-cuda12.9-cudnn-9.22.0.52",
+        "static": "/nix/store/11qr1rl225xrcslnylmgj2zqnwbjr6rd-cuda12.9-cudnn-9.22.0.52-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cudnn",
+      "priority": 5
+    },
+    {
+      "attr_path": "cudaPackages.cutensor",
+      "broken": false,
+      "derivation": "/nix/store/ak4dhyncmd2nf2a30md8m99xvmlr1n0f-libcutensor-2.1.0.9.drv",
+      "description": "cuTENSOR: A High-Performance CUDA Library For Tensor Primitives",
+      "install_id": "cutensor",
+      "license": "cuTENSOR SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "name": "libcutensor-2.1.0.9",
+      "pname": "cutensor",
+      "rev": "01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "rev_count": 882227,
+      "rev_date": "2025-10-22T06:30:52Z",
+      "scrape_date": "2026-06-10T19:52:45.822559086Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "libcutensor-2.1.0.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/ay96llqr80v9agv7hnlbabhq1fbya8y8-libcutensor-2.1.0.9-dev",
+        "lib": "/nix/store/p1ymw0rh2xxcw0yinnxs5157cnynxql3-libcutensor-2.1.0.9-lib",
+        "out": "/nix/store/wcgsp1gjnix5nvx1vikjfv9s8pjm47v2-libcutensor-2.1.0.9",
+        "static": "/nix/store/5lh1kkijiax47jjxk9mvb47gnkj86a8y-libcutensor-2.1.0.9-static"
+      },
+      "system": "aarch64-linux",
+      "group": "cutensor",
+      "priority": 10
+    },
+    {
+      "attr_path": "cudaPackages.cutensor",
+      "broken": false,
+      "derivation": "/nix/store/3p36m4vx467kjjki2jy0pbf65kx6d3na-libcutensor-2.1.0.9.drv",
+      "description": "cuTENSOR: A High-Performance CUDA Library For Tensor Primitives",
+      "install_id": "cutensor",
+      "license": "cuTENSOR SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "name": "libcutensor-2.1.0.9",
+      "pname": "cutensor",
+      "rev": "01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "rev_count": 882227,
+      "rev_date": "2025-10-22T06:30:52Z",
+      "scrape_date": "2026-06-10T19:52:45.822559908Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "libcutensor-2.1.0.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/ggakxpkfgmg1xjvviasxcya20wqplaas-libcutensor-2.1.0.9-dev",
+        "lib": "/nix/store/x7anhhc1fh30gx6nmyqsi2415y549z4c-libcutensor-2.1.0.9-lib",
+        "out": "/nix/store/na6m2acx40n96szsmlmri41nwv97x55m-libcutensor-2.1.0.9",
+        "static": "/nix/store/cp6fahs908zhdqjq99ndj0bxm16fmjji-libcutensor-2.1.0.9-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cutensor",
+      "priority": 10
+    }
+  ]
+}

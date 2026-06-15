@@ -1,0 +1,2865 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "schema-version": "1.12.0",
+    "install": {
+      "bash": {
+        "pkg-path": "bash"
+      },
+      "cacert": {
+        "pkg-path": "cacert"
+      },
+      "clang": {
+        "pkg-path": "clang",
+        "systems": [
+          "x86_64-darwin",
+          "aarch64-darwin"
+        ]
+      },
+      "cmake": {
+        "pkg-path": "cmake"
+      },
+      "coreutils": {
+        "pkg-path": "coreutils"
+      },
+      "cuda_cudart": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_cudart",
+        "pkg-group": "cuda",
+        "priority": 2,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_cupti": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_cupti",
+        "pkg-group": "cuda",
+        "priority": 6,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_gdb": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_gdb",
+        "pkg-group": "cuda",
+        "priority": 7,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_nvcc": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_nvcc",
+        "pkg-group": "cuda",
+        "priority": 1,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cuda_sanitizer_api": {
+        "pkg-path": "flox-cuda/cudaPackages.cuda_sanitizer_api",
+        "pkg-group": "cuda",
+        "priority": 8,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cudatoolkit": {
+        "pkg-path": "flox-cuda/cudaPackages.cudatoolkit",
+        "pkg-group": "cuda",
+        "priority": 3,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cudnn": {
+        "pkg-path": "flox-cuda/cudaPackages.cudnn",
+        "pkg-group": "cudnn",
+        "priority": 5,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "cutensor": {
+        "pkg-path": "flox-cuda/cudaPackages.cutensor",
+        "pkg-group": "cutensor",
+        "priority": 10,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "gawk": {
+        "pkg-path": "gawk",
+        "systems": [
+          "x86_64-darwin",
+          "aarch64-darwin"
+        ]
+      },
+      "gcc": {
+        "pkg-path": "gcc",
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "gcc-unwrapped": {
+        "pkg-path": "gcc-unwrapped",
+        "pkg-group": "libraries",
+        "priority": 3,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "glibc": {
+        "pkg-path": "glibc",
+        "pkg-group": "glibc",
+        "version": "2.38-44",
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "gnumake": {
+        "pkg-path": "gnumake"
+      },
+      "gnused": {
+        "pkg-path": "gnused",
+        "systems": [
+          "x86_64-darwin",
+          "aarch64-darwin"
+        ]
+      },
+      "libcublas": {
+        "pkg-path": "flox-cuda/cudaPackages.libcublas",
+        "pkg-group": "cuda",
+        "priority": 4,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "libiconv": {
+        "pkg-path": "libiconv",
+        "systems": [
+          "aarch64-darwin"
+        ]
+      },
+      "nccl": {
+        "pkg-path": "flox-cuda/cudaPackages.nccl",
+        "pkg-group": "cuda",
+        "priority": 9,
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "openssl": {
+        "pkg-path": "openssl"
+      },
+      "pkg-config": {
+        "pkg-path": "pkg-config"
+      },
+      "python": {
+        "pkg-path": "python3",
+        "pkg-group": "runtime",
+        "priority": 5,
+        "version": "3.13.12",
+        "outputs": "all"
+      },
+      "torch-cuda": {
+        "pkg-path": "flox-cuda/python3Packages.torch",
+        "pkg-group": "torch-cuda",
+        "priority": 0,
+        "version": "python3.13-torch-2.10.0",
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
+      "torch-darwin": {
+        "pkg-path": "python313Packages.torch",
+        "pkg-group": "torch-darwin",
+        "priority": 1,
+        "version": "2.10.0",
+        "systems": [
+          "aarch64-darwin"
+        ]
+      },
+      "uv": {
+        "pkg-path": "uv"
+      }
+    },
+    "vars": {
+      "CUDA_ENV_VERSION": "12.9",
+      "ML_TRAINING_VENV": "$FLOX_ENV_CACHE/venv",
+      "PIP_CACHE_DIR": "$FLOX_ENV_CACHE/pip",
+      "UV_CACHE_DIR": "$FLOX_ENV_CACHE/uv"
+    },
+    "hook": {
+      "on-activate": "  ml_training_setup() {\n    venv=\"$FLOX_ENV_CACHE/venv\"\n    if [ ! -d \"$venv\" ]; then\n      uv venv \"$venv\" --python python3\n    fi\n    if [ -f \"$venv/bin/activate\" ]; then\n      source \"$venv/bin/activate\"\n    fi\n    if [ ! -f \"$FLOX_ENV_CACHE/.training_deps_installed\" ]; then\n      uv pip install --python \"$venv/bin/python\" --quiet \\\n        numpy datasets tokenizers transformers accelerate \\\n        safetensors tensorboard scikit-learn tqdm pyyaml \\\n        fastapi uvicorn\n      touch \"$FLOX_ENV_CACHE/.training_deps_installed\"\n    fi\n  }\n  ml_training_setup\n"
+    },
+    "options": {}
+  },
+  "packages": [
+    {
+      "attr_path": "cudaPackages.cuda_cudart",
+      "broken": false,
+      "derivation": "/nix/store/yagrpkgsv4bx35i9wrcb35hwmwrw4gbr-cuda12.9-cuda_cudart-12.9.79.drv",
+      "description": "CUDA Runtime",
+      "install_id": "cuda_cudart",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cudart-12.9.79",
+      "pname": "cuda_cudart",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117125699Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/sr4fldaqpm55pklmbj1q13qral10ci00-cuda12.9-cuda_cudart-12.9.79"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 2
+    },
+    {
+      "attr_path": "cudaPackages.cuda_cudart",
+      "broken": false,
+      "derivation": "/nix/store/ahjzdzb1pch721b8kagf9gdzdxlraicn-cuda12.9-cuda_cudart-12.9.79.drv",
+      "description": "CUDA Runtime",
+      "install_id": "cuda_cudart",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cudart-12.9.79",
+      "pname": "cuda_cudart",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117131397Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/bic0rkmn4rdsy8nx2za8wldq46dnbaj3-cuda12.9-cuda_cudart-12.9.79"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 2
+    },
+    {
+      "attr_path": "cudaPackages.cuda_cupti",
+      "broken": false,
+      "derivation": "/nix/store/bz29c730v1ckxbx57wlik9sl9mw6fp0m-cuda12.9-cuda_cupti-12.9.79.drv",
+      "description": "C-based interface for creating profiling and tracing tools designed for CUDA applications",
+      "install_id": "cuda_cupti",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cupti-12.9.79",
+      "pname": "cuda_cupti",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117133220Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/k8mvlb3qb66pk0gwyyvwkks16j69r28b-cuda12.9-cuda_cupti-12.9.79-dev",
+        "include": "/nix/store/j1y6gdz0z4286rlsmss7jp4qlswi4129-cuda12.9-cuda_cupti-12.9.79-include",
+        "lib": "/nix/store/cpf1kmgcr3p6hzincapgnb5fs5d9qpjm-cuda12.9-cuda_cupti-12.9.79-lib",
+        "out": "/nix/store/dpiiv8p88kmzg9jlmrrmlgw85psqx3si-cuda12.9-cuda_cupti-12.9.79",
+        "samples": "/nix/store/yyq1rj2iq32z01w3dpbs973jrww2ali0-cuda12.9-cuda_cupti-12.9.79-samples"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 6
+    },
+    {
+      "attr_path": "cudaPackages.cuda_cupti",
+      "broken": false,
+      "derivation": "/nix/store/h2h02bg65018xlssiqvbmswz0c22qs8c-cuda12.9-cuda_cupti-12.9.79.drv",
+      "description": "C-based interface for creating profiling and tracing tools designed for CUDA applications",
+      "install_id": "cuda_cupti",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_cupti-12.9.79",
+      "pname": "cuda_cupti",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117134372Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/qckbqy80526mn2kj9ixs62hlqq9s0w19-cuda12.9-cuda_cupti-12.9.79-dev",
+        "include": "/nix/store/z565ca8rc8k4vgz3l2cj2vp0dv62rv8l-cuda12.9-cuda_cupti-12.9.79-include",
+        "lib": "/nix/store/20r8px8s2y94hrlzqsrxai63vqs1vkm4-cuda12.9-cuda_cupti-12.9.79-lib",
+        "out": "/nix/store/pkik89fxpfd9fn5p5lnfi5brykfxyrdn-cuda12.9-cuda_cupti-12.9.79",
+        "samples": "/nix/store/f60g82fnna81zfvvy44dan33zk435g6b-cuda12.9-cuda_cupti-12.9.79-samples",
+        "static": "/nix/store/gcrl4szf5zmk20wy3l846y6jp760cmdh-cuda12.9-cuda_cupti-12.9.79-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 6
+    },
+    {
+      "attr_path": "cudaPackages.cuda_gdb",
+      "broken": false,
+      "derivation": "/nix/store/d60wlk7ick0r887wqxh9nza9qy1y9sk0-cuda12.9-cuda_gdb-12.9.79.drv",
+      "description": "NVIDIA tool for debugging CUDA applications on Linux and QNX systems",
+      "install_id": "cuda_gdb",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_gdb-12.9.79",
+      "pname": "cuda_gdb",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117135353Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/y54w78f85qk4vi2kqyh8ywzidhgcvz93-cuda12.9-cuda_gdb-12.9.79-bin",
+        "out": "/nix/store/rqvgz75n4fbckr4rglbry9dvw20zzcsr-cuda12.9-cuda_gdb-12.9.79"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 7
+    },
+    {
+      "attr_path": "cudaPackages.cuda_gdb",
+      "broken": false,
+      "derivation": "/nix/store/vl7lj2mlrmcd5qxsafxb8l9x4b3kzpn6-cuda12.9-cuda_gdb-12.9.79.drv",
+      "description": "NVIDIA tool for debugging CUDA applications on Linux and QNX systems",
+      "install_id": "cuda_gdb",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_gdb-12.9.79",
+      "pname": "cuda_gdb",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117136545Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/mbgjp6ssabx7lf2lvilhz8s9d0f6ya6i-cuda12.9-cuda_gdb-12.9.79-bin",
+        "out": "/nix/store/wrrmyp23acc0ha05j2ssihbvaxpdsbas-cuda12.9-cuda_gdb-12.9.79"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 7
+    },
+    {
+      "attr_path": "cudaPackages.cuda_nvcc",
+      "broken": false,
+      "derivation": "/nix/store/lb5lqm20lib984hdn5cc6d2d4yp2r3s7-cuda12.9-cuda_nvcc-12.9.86.drv",
+      "description": "CUDA compiler driver",
+      "install_id": "cuda_nvcc",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_nvcc-12.9.86",
+      "pname": "cuda_nvcc",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117137316Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.86",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/1jnqzlp9wkw84cdsm9kg52kzvv7gkb8i-cuda12.9-cuda_nvcc-12.9.86"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 1
+    },
+    {
+      "attr_path": "cudaPackages.cuda_nvcc",
+      "broken": false,
+      "derivation": "/nix/store/63kmrj50945aix86ng5pakayvfgnjy3w-cuda12.9-cuda_nvcc-12.9.86.drv",
+      "description": "CUDA compiler driver",
+      "install_id": "cuda_nvcc",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_nvcc-12.9.86",
+      "pname": "cuda_nvcc",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117137867Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.86",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/50fi3x00m5ksrpcmc4pbkh57h9dhl8ls-cuda12.9-cuda_nvcc-12.9.86"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 1
+    },
+    {
+      "attr_path": "cudaPackages.cuda_sanitizer_api",
+      "broken": false,
+      "derivation": "/nix/store/1p0669ix1ayqfyavg6clrfhmn2bd1rsk-cuda12.9-cuda_sanitizer_api-12.9.79.drv",
+      "description": "Enables the creation of sanitizing and tracing tools that target CUDA applications",
+      "install_id": "cuda_sanitizer_api",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_sanitizer_api-12.9.79",
+      "pname": "cuda_sanitizer_api",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117138418Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "cuda12.9-cuda_sanitizer_api-12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/5z1wcrk7b7kszffyymdqnfb2b0imvdim-cuda12.9-cuda_sanitizer_api-12.9.79"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 8
+    },
+    {
+      "attr_path": "cudaPackages.cuda_sanitizer_api",
+      "broken": false,
+      "derivation": "/nix/store/g0bsj41mh0p9mknc4xkb8gk21yqqvcqy-cuda12.9-cuda_sanitizer_api-12.9.79.drv",
+      "description": "Enables the creation of sanitizing and tracing tools that target CUDA applications",
+      "install_id": "cuda_sanitizer_api",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cuda_sanitizer_api-12.9.79",
+      "pname": "cuda_sanitizer_api",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117139069Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.79",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/fp3h70vhx9fwgw108vvyhc70x1jmjwrk-cuda12.9-cuda_sanitizer_api-12.9.79"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 8
+    },
+    {
+      "attr_path": "cudaPackages.cudatoolkit",
+      "broken": false,
+      "derivation": "/nix/store/rniph2bsaa1crgdzrjni8c6h1w3kbin6-cuda-merged-12.9.drv",
+      "description": "Wrapper substituting the deprecated runfile-based CUDA installation",
+      "install_id": "cudatoolkit",
+      "license": "CUDA Toolkit End User License Agreement (EULA)",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda-merged-12.9",
+      "pname": "cudatoolkit",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117139550Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "cuda-merged-12.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/22303nk6943hi4wx0dxw51hnkfkr1g3g-cuda-merged-12.9"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 3
+    },
+    {
+      "attr_path": "cudaPackages.cudatoolkit",
+      "broken": false,
+      "derivation": "/nix/store/ai49f3hiz97lp6sc1flqljl53jd50wr2-cuda-merged-12.9.drv",
+      "description": "Wrapper substituting the deprecated runfile-based CUDA installation",
+      "install_id": "cudatoolkit",
+      "license": "CUDA Toolkit End User License Agreement (EULA)",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda-merged-12.9",
+      "pname": "cuda-merged",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117139880Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/p49i1vrhcaw5nf2r3bwgmwfz5x8zgb14-cuda-merged-12.9"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 3
+    },
+    {
+      "attr_path": "cudaPackages.libcublas",
+      "broken": false,
+      "derivation": "/nix/store/gfyjjlhgs2m3x35fyvc77x199xhqcyif-cuda12.9-libcublas-12.9.1.4.drv",
+      "description": "CUDA Basic Linear Algebra Subroutine library",
+      "install_id": "libcublas",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-libcublas-12.9.1.4",
+      "pname": "libcublas",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117141332Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.1.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/s0s96g3zcdi3cydj9l4fj4x1g25sqmzx-cuda12.9-libcublas-12.9.1.4-dev",
+        "include": "/nix/store/h8rgjwp37wjpknhncrxb8h1xzb2594wy-cuda12.9-libcublas-12.9.1.4-include",
+        "lib": "/nix/store/crx1wmhp2idnrmxjq0fhilglyndn64kr-cuda12.9-libcublas-12.9.1.4-lib",
+        "out": "/nix/store/s74ya41wnjzbjkabyb5frqgyjjbsh1x3-cuda12.9-libcublas-12.9.1.4",
+        "static": "/nix/store/8srx80zzgndwg3zpy68i2jll886cmyvb-cuda12.9-libcublas-12.9.1.4-static",
+        "stubs": "/nix/store/yfkvrl5z9dvdbbf061hdxmdqr71dls2b-cuda12.9-libcublas-12.9.1.4-stubs"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 4
+    },
+    {
+      "attr_path": "cudaPackages.libcublas",
+      "broken": false,
+      "derivation": "/nix/store/shfbmxapalxhdixm35yr5nc9q8y6wxpa-cuda12.9-libcublas-12.9.1.4.drv",
+      "description": "CUDA Basic Linear Algebra Subroutine library",
+      "install_id": "libcublas",
+      "license": "[ CUDA Toolkit End User License Agreement (EULA) ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-libcublas-12.9.1.4",
+      "pname": "libcublas",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117142003Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "12.9.1.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/c4zxa6xxygz5kgziq9qax981m37dcm8k-cuda12.9-libcublas-12.9.1.4-dev",
+        "include": "/nix/store/8wlyjd7hkw5rfxxpgdn5vs8pvcifyxca-cuda12.9-libcublas-12.9.1.4-include",
+        "lib": "/nix/store/n474iszgrq3ganwy2b9a35m9mv57szfd-cuda12.9-libcublas-12.9.1.4-lib",
+        "out": "/nix/store/615iwspc4qyn8ssgyz546cds78sbn0fc-cuda12.9-libcublas-12.9.1.4",
+        "static": "/nix/store/3bg9nxslqwals6s33a486glcw6c8v29f-cuda12.9-libcublas-12.9.1.4-static",
+        "stubs": "/nix/store/iljakrwfdlfvq5ficdd8cf9ymlczckmz-cuda12.9-libcublas-12.9.1.4-stubs"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 4
+    },
+    {
+      "attr_path": "cudaPackages.nccl",
+      "broken": false,
+      "derivation": "/nix/store/k96vzs862xbc0ibnanml7nvrp1x220lj-cuda12.9-nccl-2.28.7-1.drv",
+      "description": "Multi-GPU and multi-node collective communication primitives for NVIDIA GPUs",
+      "install_id": "nccl",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-nccl-2.28.7-1",
+      "pname": "nccl",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117142504Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.28.7-1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/y98ci0yd506k19564rlb95440m8533qh-cuda12.9-nccl-2.28.7-1-dev",
+        "out": "/nix/store/k0g3z8zyxcljrsnxra3xbj42r3q9crsi-cuda12.9-nccl-2.28.7-1",
+        "static": "/nix/store/5cmmaw9kisjyfnl0hin913d9jxnkc7gy-cuda12.9-nccl-2.28.7-1-static"
+      },
+      "system": "aarch64-linux",
+      "group": "cuda",
+      "priority": 9
+    },
+    {
+      "attr_path": "cudaPackages.nccl",
+      "broken": false,
+      "derivation": "/nix/store/yqd05i6da8qljjwyabydkbdlwayrbipb-cuda12.9-nccl-2.28.7-1.drv",
+      "description": "Multi-GPU and multi-node collective communication primitives for NVIDIA GPUs",
+      "install_id": "nccl",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-nccl-2.28.7-1",
+      "pname": "nccl",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117142935Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.28.7-1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/dkav1cc4d1a28x6q1yijp16y25p7l2g7-cuda12.9-nccl-2.28.7-1-dev",
+        "out": "/nix/store/2ly6phm07kvbaf5am3a7d2cvksv2bxdy-cuda12.9-nccl-2.28.7-1",
+        "static": "/nix/store/lbwghpc362hm50py51mblpj51a30x6xi-cuda12.9-nccl-2.28.7-1-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cuda",
+      "priority": 9
+    },
+    {
+      "attr_path": "cudaPackages.cudnn",
+      "broken": false,
+      "derivation": "/nix/store/4jga4vhkgghw2d3hwq1v8i4lwvw21fcr-cuda12.9-cudnn-9.22.0.52.drv",
+      "description": "GPU-accelerated library of primitives for deep neural networks",
+      "install_id": "cudnn",
+      "license": "[ cuDNN SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cudnn-9.22.0.52",
+      "pname": "cudnn",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117146210Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "9.22.0.52",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/l2q2pacy4b03mi4xi1qrmnfvp276vzpa-cuda12.9-cudnn-9.22.0.52-dev",
+        "include": "/nix/store/8s85bkqa95bhbjdlmycaj02yz020cawg-cuda12.9-cudnn-9.22.0.52-include",
+        "lib": "/nix/store/5zhrjiiv7s45q82wk7fa5zrdzlhcs4dy-cuda12.9-cudnn-9.22.0.52-lib",
+        "out": "/nix/store/8z8nf5s00gl1r30w7v4k9shx3r22wp4m-cuda12.9-cudnn-9.22.0.52",
+        "static": "/nix/store/vpjglningysgd0i75n4dzia0c3n876n8-cuda12.9-cudnn-9.22.0.52-static"
+      },
+      "system": "aarch64-linux",
+      "group": "cudnn",
+      "priority": 5
+    },
+    {
+      "attr_path": "cudaPackages.cudnn",
+      "broken": false,
+      "derivation": "/nix/store/ha3ayahdsf34b200970s5gzx11c4wr8j-cuda12.9-cudnn-9.22.0.52.drv",
+      "description": "GPU-accelerated library of primitives for deep neural networks",
+      "install_id": "cudnn",
+      "license": "[ cuDNN SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "name": "cuda12.9-cudnn-9.22.0.52",
+      "pname": "cudnn",
+      "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+      "rev_count": 1004030,
+      "rev_date": "2026-05-23T18:24:25Z",
+      "scrape_date": "2026-06-15T20:25:03.117147482Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "9.22.0.52",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/x8k9cnllnzp7x1i32ji7j57dlssbn614-cuda12.9-cudnn-9.22.0.52-dev",
+        "include": "/nix/store/3fkhy50iyjhy4lqkz415j4ns32gx1f2g-cuda12.9-cudnn-9.22.0.52-include",
+        "lib": "/nix/store/cpd2rl4ajq36nbsi2sm8pvqmn7nb5vf8-cuda12.9-cudnn-9.22.0.52-lib",
+        "out": "/nix/store/nfcs64iqa8jvwm21kldwxi6rd2yn8z0c-cuda12.9-cudnn-9.22.0.52",
+        "static": "/nix/store/11qr1rl225xrcslnylmgj2zqnwbjr6rd-cuda12.9-cudnn-9.22.0.52-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cudnn",
+      "priority": 5
+    },
+    {
+      "attr_path": "cudaPackages.cutensor",
+      "broken": false,
+      "derivation": "/nix/store/ak4dhyncmd2nf2a30md8m99xvmlr1n0f-libcutensor-2.1.0.9.drv",
+      "description": "cuTENSOR: A High-Performance CUDA Library For Tensor Primitives",
+      "install_id": "cutensor",
+      "license": "cuTENSOR SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "name": "libcutensor-2.1.0.9",
+      "pname": "cutensor",
+      "rev": "01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "rev_count": 882227,
+      "rev_date": "2025-10-22T06:30:52Z",
+      "scrape_date": "2026-06-15T20:25:03.117149785Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "libcutensor-2.1.0.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/ay96llqr80v9agv7hnlbabhq1fbya8y8-libcutensor-2.1.0.9-dev",
+        "lib": "/nix/store/p1ymw0rh2xxcw0yinnxs5157cnynxql3-libcutensor-2.1.0.9-lib",
+        "out": "/nix/store/wcgsp1gjnix5nvx1vikjfv9s8pjm47v2-libcutensor-2.1.0.9",
+        "static": "/nix/store/5lh1kkijiax47jjxk9mvb47gnkj86a8y-libcutensor-2.1.0.9-static"
+      },
+      "system": "aarch64-linux",
+      "group": "cutensor",
+      "priority": 10
+    },
+    {
+      "attr_path": "cudaPackages.cutensor",
+      "broken": false,
+      "derivation": "/nix/store/3p36m4vx467kjjki2jy0pbf65kx6d3na-libcutensor-2.1.0.9.drv",
+      "description": "cuTENSOR: A High-Performance CUDA Library For Tensor Primitives",
+      "install_id": "cutensor",
+      "license": "cuTENSOR SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "name": "libcutensor-2.1.0.9",
+      "pname": "cutensor",
+      "rev": "01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+      "rev_count": 882227,
+      "rev_date": "2025-10-22T06:30:52Z",
+      "scrape_date": "2026-06-15T20:25:03.117150296Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "libcutensor-2.1.0.9",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/ggakxpkfgmg1xjvviasxcya20wqplaas-libcutensor-2.1.0.9-dev",
+        "lib": "/nix/store/x7anhhc1fh30gx6nmyqsi2415y549z4c-libcutensor-2.1.0.9-lib",
+        "out": "/nix/store/na6m2acx40n96szsmlmri41nwv97x55m-libcutensor-2.1.0.9",
+        "static": "/nix/store/cp6fahs908zhdqjq99ndj0bxm16fmjji-libcutensor-2.1.0.9-static"
+      },
+      "system": "x86_64-linux",
+      "group": "cutensor",
+      "priority": 10
+    },
+    {
+      "attr_path": "glibc",
+      "broken": false,
+      "derivation": "/nix/store/lbbawwdmw8vqznf83f70dab7wvng471q-glibc-2.38-44.drv",
+      "description": "The GNU C Library",
+      "install_id": "glibc",
+      "license": "LGPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d8fe5e6c92d0d190646fb9f1056741a229980089",
+      "name": "glibc-2.38-44",
+      "pname": "glibc",
+      "rev": "d8fe5e6c92d0d190646fb9f1056741a229980089",
+      "rev_count": 604424,
+      "rev_date": "2024-03-29T09:07:56Z",
+      "scrape_date": "2024-08-15T21:25:15Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.38-44",
+      "outputs_to_install": [
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/bzzf0b0mh2d2ghjh9r42h21wh9fqf3js-glibc-2.38-44-bin",
+        "debug": "/nix/store/v8valizwgq22iyai7apvm905s5j2jzmc-glibc-2.38-44-debug",
+        "dev": "/nix/store/3bbiwcxmbx5im752xwqaxyjy12cy3xps-glibc-2.38-44-dev",
+        "getent": "/nix/store/liqp8znv1vw6i1b48pkmlm7micllp9dv-glibc-2.38-44-getent",
+        "out": "/nix/store/zczdyq0xysvli139lf70i4dydvq6syhk-glibc-2.38-44",
+        "static": "/nix/store/v233s0fprv7ayfq9c8ax6a4sgsl43h2d-glibc-2.38-44-static"
+      },
+      "system": "aarch64-linux",
+      "group": "glibc",
+      "priority": 5
+    },
+    {
+      "attr_path": "glibc",
+      "broken": false,
+      "derivation": "/nix/store/jdz6mf99da6hs2afsnjmkcbrffamdyw0-glibc-2.38-44.drv",
+      "description": "The GNU C Library",
+      "install_id": "glibc",
+      "license": "LGPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d8fe5e6c92d0d190646fb9f1056741a229980089",
+      "name": "glibc-2.38-44",
+      "pname": "glibc",
+      "rev": "d8fe5e6c92d0d190646fb9f1056741a229980089",
+      "rev_count": 604424,
+      "rev_date": "2024-03-29T09:07:56Z",
+      "scrape_date": "2024-08-15T21:25:15Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.38-44",
+      "outputs_to_install": [
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/2ksh88m9fnnmj8xn5a2a0z2q9vakbjpj-glibc-2.38-44-bin",
+        "debug": "/nix/store/3j4zcqfg5palnh3y9nyi0i8naipm21q5-glibc-2.38-44-debug",
+        "dev": "/nix/store/6jk1d1m5j9d8gjyq79zqlgqqs9j3gcwn-glibc-2.38-44-dev",
+        "getent": "/nix/store/088jnrpd2d6vqzyddm07x6wjfgjgmv2d-glibc-2.38-44-getent",
+        "out": "/nix/store/1rm6sr6ixxzipv5358x0cmaw8rs84g2j-glibc-2.38-44",
+        "static": "/nix/store/gnamly9z9ni53d0c2fllvkm510h3v0y0-glibc-2.38-44-static"
+      },
+      "system": "x86_64-linux",
+      "group": "glibc",
+      "priority": 5
+    },
+    {
+      "attr_path": "gcc-unwrapped",
+      "broken": false,
+      "derivation": "/nix/store/2j1pd3hiablk96q12z214c5d4hz4i93n-gcc-15.2.0.drv",
+      "description": "GNU Compiler Collection, version 15.2.0",
+      "install_id": "gcc-unwrapped",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9ae611a455b90cf061d8f332b977e387bda8e1ca",
+      "name": "gcc-15.2.0",
+      "pname": "gcc-unwrapped",
+      "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
+      "rev_count": 1014179,
+      "rev_date": "2026-06-10T06:56:03Z",
+      "scrape_date": "2026-06-12T03:44:34.010372Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "15.2.0",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "checksum": "/nix/store/69ajjqz4gcgwc5zhhbdjgx9hygn6p1gp-gcc-15.2.0-checksum",
+        "info": "/nix/store/ms1cpdz5nl0l93p0r5m28nvrzwg4ivf0-gcc-15.2.0-info",
+        "lib": "/nix/store/7a3zsvzzm9ki2r3w2cl0mx12zjicinkj-gcc-15.2.0-lib",
+        "libgcc": "/nix/store/l5ypyhyv1df633ldrdj8fyhnxaqqw6s7-gcc-15.2.0-libgcc",
+        "man": "/nix/store/w6hhfc64qc2n51kds1ki5nlylrypkrkd-gcc-15.2.0-man",
+        "out": "/nix/store/hy0wk8hisvsiql18i7v8qrvzkcagz1nc-gcc-15.2.0"
+      },
+      "system": "aarch64-linux",
+      "group": "libraries",
+      "priority": 3
+    },
+    {
+      "attr_path": "gcc-unwrapped",
+      "broken": false,
+      "derivation": "/nix/store/vp409v6lb83p243hmv8wgdmiaj7ivq6h-gcc-15.2.0.drv",
+      "description": "GNU Compiler Collection, version 15.2.0",
+      "install_id": "gcc-unwrapped",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9ae611a455b90cf061d8f332b977e387bda8e1ca",
+      "name": "gcc-15.2.0",
+      "pname": "gcc-unwrapped",
+      "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
+      "rev_count": 1014179,
+      "rev_date": "2026-06-10T06:56:03Z",
+      "scrape_date": "2026-06-12T04:47:37.219007Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "15.2.0",
+      "outputs_to_install": [
+        "man",
+        "man",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "checksum": "/nix/store/x37x98ygrwmp439bf5ilmrvgzz7lpjzl-gcc-15.2.0-checksum",
+        "info": "/nix/store/ppv8h4xawrqpnqhrdimk8xg9wwlfxxp5-gcc-15.2.0-info",
+        "lib": "/nix/store/chqq8mpmpyfi9kgsngya71akv5xicn03-gcc-15.2.0-lib",
+        "libgcc": "/nix/store/xyikkpwkyxx6syba3kfrr0h67ig5hwmn-gcc-15.2.0-libgcc",
+        "man": "/nix/store/b1p9a901ds4wck8n1pd76vxnjm34sfap-gcc-15.2.0-man",
+        "out": "/nix/store/qxaq7jz61a6zkr2mq49i0zvqip2m2jj8-gcc-15.2.0"
+      },
+      "system": "x86_64-linux",
+      "group": "libraries",
+      "priority": 3
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/4jsnzrzl379r6cjrr836lh6vi4p4kgv4-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T07:06:30.977992Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/kwnbzccaiqi6iwdchcy6xc8br4x9hn0j-python3-3.13.12"
+      },
+      "system": "aarch64-darwin",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/5a3k0w97564gz3qxf00dvrs6yn9v8dl6-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T07:34:27.380432Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/xyg8jfgpbyap2blwfmh3lhxy1vmhhbia-python3-3.13.12-debug",
+        "out": "/nix/store/36mns0lq3c2zgky08rsq0xvamfzglzvj-python3-3.13.12"
+      },
+      "system": "aarch64-linux",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/227zjffs3h685la0wmjp42z850j2f59w-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T08:01:59.557180Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/mgd8qy2z9xj5y7lkrfw1zw2l6adanc1d-python3-3.13.12"
+      },
+      "system": "x86_64-darwin",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3",
+      "broken": false,
+      "derivation": "/nix/store/akf75nmhvs2x06g2qrag3vd321rpp02i-python3-3.13.12.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d233902339c02a9c334e7e593de68855ad26c4cb",
+      "name": "python3-3.13.12",
+      "pname": "python3",
+      "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "rev_count": 998534,
+      "rev_date": "2026-05-15T18:21:44Z",
+      "scrape_date": "2026-05-17T08:33:14.090818Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.13.12",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/4q5zc1g7w4x5c0p5cdv1nh61z8ddxqqq-python3-3.13.12-debug",
+        "out": "/nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12"
+      },
+      "system": "x86_64-linux",
+      "group": "runtime",
+      "priority": 5
+    },
+    {
+      "attr_path": "bash",
+      "broken": false,
+      "derivation": "/nix/store/2nzhs7jg63fpazry1c5ag2qxiqfbkw9b-bash-interactive-5.3p9.drv",
+      "description": "GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)",
+      "install_id": "bash",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "bash-interactive-5.3p9",
+      "pname": "bash",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:18.715864Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3p9",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/xmb14n7f9yh8dyvqchlcyjzwp62wdnnb-bash-interactive-5.3p9-dev",
+        "doc": "/nix/store/mjx4h2q5ryysmci0ilb3n7iihphf35nw-bash-interactive-5.3p9-doc",
+        "info": "/nix/store/id48aywm43d68kcw0ykj58dx4ylphn8g-bash-interactive-5.3p9-info",
+        "man": "/nix/store/z582wbk8fi8akrn1rmdp2s2lr93nfs6d-bash-interactive-5.3p9-man",
+        "out": "/nix/store/jmww9gmmd1h1wjhlw4adcfnb2xkbab1w-bash-interactive-5.3p9"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "bash",
+      "broken": false,
+      "derivation": "/nix/store/cxib55fm0srq5x6cwj4ryi2vlp36pwp3-bash-interactive-5.3p9.drv",
+      "description": "GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)",
+      "install_id": "bash",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "bash-interactive-5.3p9",
+      "pname": "bash",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:46:50.797323Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3p9",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/59jsjxl9w1yp212h1d1qq0xl0v2cch06-bash-interactive-5.3p9-debug",
+        "dev": "/nix/store/1ry8ms2dz2ggmind11cwcxba1bsiih8p-bash-interactive-5.3p9-dev",
+        "doc": "/nix/store/kvrdzcknzwwfim9bcrmqjghk74lmgrz6-bash-interactive-5.3p9-doc",
+        "info": "/nix/store/npi4wzy3qpn6x7ljdpd5kn1bvn5jzqx3-bash-interactive-5.3p9-info",
+        "man": "/nix/store/zfmp9hfsfz2my62xpy5lx2b2ax33zv8y-bash-interactive-5.3p9-man",
+        "out": "/nix/store/rprpkkhvvf36qgpxhdjb7nmq26ayhf3f-bash-interactive-5.3p9"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "bash",
+      "broken": false,
+      "derivation": "/nix/store/6shfk4swlf3gshx27rvgha71xji559dm-bash-interactive-5.3p9.drv",
+      "description": "GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)",
+      "install_id": "bash",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "bash-interactive-5.3p9",
+      "pname": "bash",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:43.503991Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3p9",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/cfhl4fg2r45ax7sj1q7k9dmakwvmkgbi-bash-interactive-5.3p9-dev",
+        "doc": "/nix/store/i66hd4cbb3dljv5bl8wxmlaqbahj1j2c-bash-interactive-5.3p9-doc",
+        "info": "/nix/store/193n101bfkh5r1mb1mrx1m6bqp6qzas5-bash-interactive-5.3p9-info",
+        "man": "/nix/store/l41a2yy55nnsq632kyn0r94ck12cfdal-bash-interactive-5.3p9-man",
+        "out": "/nix/store/93lxfa3hg9944zd0wsb2pvy20l9p0z1n-bash-interactive-5.3p9"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "bash",
+      "broken": false,
+      "derivation": "/nix/store/sqwn65xb0ymbbhfbvcsksy7py02pd1gd-bash-interactive-5.3p9.drv",
+      "description": "GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)",
+      "install_id": "bash",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "bash-interactive-5.3p9",
+      "pname": "bash",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:53:14.385379Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3p9",
+      "outputs_to_install": [
+        "man",
+        "man",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/18k6pfp43yzqh83mxzmj3cpm4x6866j0-bash-interactive-5.3p9-debug",
+        "dev": "/nix/store/bvsy09r85z0q1m30p87s1bf4ikb0s84i-bash-interactive-5.3p9-dev",
+        "doc": "/nix/store/bhbjla95nysak3l3464zjf5phdmqk66v-bash-interactive-5.3p9-doc",
+        "info": "/nix/store/46jj4fy2cndcp00j4972bpddadijxjmc-bash-interactive-5.3p9-info",
+        "man": "/nix/store/73fr7zjwc2s46y7vrq8563237l0ivqcb-bash-interactive-5.3p9-man",
+        "out": "/nix/store/cgjr3kj3hs7ngznyws5qfg16c8scpys0-bash-interactive-5.3p9"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cacert",
+      "broken": false,
+      "derivation": "/nix/store/vw1xazsfgi72gbazi0xwvsnd5bwpy015-nss-cacert-3.123.drv",
+      "description": "Bundle of X.509 certificates of public Certificate Authorities (CA)",
+      "install_id": "cacert",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "nss-cacert-3.123",
+      "pname": "cacert",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:18.810423Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.123",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "hashed": "/nix/store/05d9ffv74pixff6bbz1i9jqr3110kqbz-nss-cacert-3.123-hashed",
+        "out": "/nix/store/jkhhr4fpw5sfcav2p9zj1gjq041sjp3n-nss-cacert-3.123",
+        "p11kit": "/nix/store/7q0pisc38xlsz8bzddyknslwyrw2jq69-nss-cacert-3.123-p11kit",
+        "unbundled": "/nix/store/3j2bwh2bxmz3w87y8m3l8shwbmmn17y0-nss-cacert-3.123-unbundled"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cacert",
+      "broken": false,
+      "derivation": "/nix/store/j5lg95cm6lrfi3szzd66py0cwwl70rnd-nss-cacert-3.123.drv",
+      "description": "Bundle of X.509 certificates of public Certificate Authorities (CA)",
+      "install_id": "cacert",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "nss-cacert-3.123",
+      "pname": "cacert",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:46:50.928681Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.123",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "hashed": "/nix/store/3m38j1iz2dsrsc3l5q30y3br8q1lmz3b-nss-cacert-3.123-hashed",
+        "out": "/nix/store/pd7bb73la01b07d6391mk2a43mhmjghd-nss-cacert-3.123",
+        "p11kit": "/nix/store/rm663w0vs9asfcl6a7v82pdl2qqhd6g9-nss-cacert-3.123-p11kit",
+        "unbundled": "/nix/store/6yd6rj0dvglhwk7qfya9a6ny05yksbl0-nss-cacert-3.123-unbundled"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cacert",
+      "broken": false,
+      "derivation": "/nix/store/zz0riq7jw0cilgdvpqcpaq0igkh9iicq-nss-cacert-3.123.drv",
+      "description": "Bundle of X.509 certificates of public Certificate Authorities (CA)",
+      "install_id": "cacert",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "nss-cacert-3.123",
+      "pname": "cacert",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:43.599054Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.123",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "hashed": "/nix/store/hmhy3phn5016krm2d9wrj8g7xhawx45j-nss-cacert-3.123-hashed",
+        "out": "/nix/store/fql29ma40z7kfmlwsdx4rz92s8pc9lvm-nss-cacert-3.123",
+        "p11kit": "/nix/store/n58gqa4ccf7w9hplyd95vy4xncqvwnr5-nss-cacert-3.123-p11kit",
+        "unbundled": "/nix/store/0lfr0w1cbxzdk7ai5dc6qhqpmrw9p3a3-nss-cacert-3.123-unbundled"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cacert",
+      "broken": false,
+      "derivation": "/nix/store/303zvxqv6azsb8iiblqm4ligbiwiin2i-nss-cacert-3.123.drv",
+      "description": "Bundle of X.509 certificates of public Certificate Authorities (CA)",
+      "install_id": "cacert",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "nss-cacert-3.123",
+      "pname": "cacert",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:53:14.536361Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.123",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "hashed": "/nix/store/xdh7nr550vh5q5rqjas1d5y5fhcp4v5a-nss-cacert-3.123-hashed",
+        "out": "/nix/store/6snfrwakqanqp7c21nnzmz183fkhnzv1-nss-cacert-3.123",
+        "p11kit": "/nix/store/g64cqi02bajwcp8qbw3d6nhz4kdcjg71-nss-cacert-3.123-p11kit",
+        "unbundled": "/nix/store/8ylfzdcp1l289jl1fv4hds1j35jla7cd-nss-cacert-3.123-unbundled"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "clang",
+      "broken": false,
+      "derivation": "/nix/store/cyj8cl8sfj0lbv8k88a7jja4lxn7g8i1-clang-wrapper-21.1.8.drv",
+      "description": "C language family frontend for LLVM (wrapper script)",
+      "install_id": "clang",
+      "license": "[ NCSA, [ Apache-2.0 LLVM-exception ] ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "clang-wrapper-21.1.8",
+      "pname": "clang",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:19.040042Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "21.1.8",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/l32bv33wqwkj2l1y8dp5x6h9r3q9im77-clang-wrapper-21.1.8"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "clang",
+      "broken": false,
+      "derivation": "/nix/store/4s3yfqfjdiw0j8d6l84vbp3zys3wsl91-clang-wrapper-21.1.8.drv",
+      "description": "C language family frontend for LLVM (wrapper script)",
+      "install_id": "clang",
+      "license": "[ NCSA, [ Apache-2.0 LLVM-exception ] ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "clang-wrapper-21.1.8",
+      "pname": "clang",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:43.792685Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "21.1.8",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/rp3shfv6zk8m02lf4xm5nbkiyb586pv4-clang-wrapper-21.1.8"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cmake",
+      "broken": false,
+      "derivation": "/nix/store/l9li3q8fz074acvwiq1kkd291bcj463x-cmake-4.1.2.drv",
+      "description": "Cross-platform, open-source build system generator",
+      "install_id": "cmake",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "cmake-4.1.2",
+      "pname": "cmake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:19.065978Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.1.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/gvabsb4yqb5xsqzqph54rijnn4zpihnp-cmake-4.1.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cmake",
+      "broken": false,
+      "derivation": "/nix/store/94gksypg56awldas2w16qvx6pskw9mfv-cmake-4.1.2.drv",
+      "description": "Cross-platform, open-source build system generator",
+      "install_id": "cmake",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "cmake-4.1.2",
+      "pname": "cmake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:46:51.209836Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.1.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/q55xawj2v3hxgcd0y27sjhwknyhb56x1-cmake-4.1.2-debug",
+        "out": "/nix/store/nkcpxjifkambzlrwh27a8igvhnbchibg-cmake-4.1.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cmake",
+      "broken": false,
+      "derivation": "/nix/store/sbj7pni6mbgrw584s44zpnihvh9q24js-cmake-4.1.2.drv",
+      "description": "Cross-platform, open-source build system generator",
+      "install_id": "cmake",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "cmake-4.1.2",
+      "pname": "cmake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:43.819451Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.1.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/1snxq7cpvwi76i8k59daafd4arga57s6-cmake-4.1.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cmake",
+      "broken": false,
+      "derivation": "/nix/store/chjihb93qzh3xi3x8if7259bz2lzj8b1-cmake-4.1.2.drv",
+      "description": "Cross-platform, open-source build system generator",
+      "install_id": "cmake",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "cmake-4.1.2",
+      "pname": "cmake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:53:14.843518Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.1.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/rd1qfyjkzr3zswd8v5jblv9j2nydcxgx-cmake-4.1.2-debug",
+        "out": "/nix/store/r9941n32g4wyvggz2703dlplbdq8a6rd-cmake-4.1.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "coreutils",
+      "broken": false,
+      "derivation": "/nix/store/xhh9r2djb00zz515x68m359kv3z35lp6-coreutils-9.11.drv",
+      "description": "GNU Core Utilities",
+      "install_id": "coreutils",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "coreutils-9.11",
+      "pname": "coreutils",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:19.150699Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "9.11",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/83kk1z6r4n7il426hl9qhgvjn3gw3i3k-coreutils-9.11-info",
+        "out": "/nix/store/y0ha8v4gh5vnwwmp2r0msfbdlvgwv2np-coreutils-9.11"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "coreutils",
+      "broken": false,
+      "derivation": "/nix/store/hcyz1x1w9dxfsmq5kv2abdw2qvnv766h-coreutils-9.11.drv",
+      "description": "GNU Core Utilities",
+      "install_id": "coreutils",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "coreutils-9.11",
+      "pname": "coreutils",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:46:51.322263Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "9.11",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/p2vk0ll7l8dp5n203ffrvjpj491h6x90-coreutils-9.11-debug",
+        "info": "/nix/store/c96my4whwlw38gqj39370k93bbbrwn3h-coreutils-9.11-info",
+        "out": "/nix/store/9bhf1ff1kwhmyynws5jkjp8k7pkh6kix-coreutils-9.11"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "coreutils",
+      "broken": false,
+      "derivation": "/nix/store/9hnqb5qhawavdjqys5bvfy84wyw3n8hd-coreutils-9.11.drv",
+      "description": "GNU Core Utilities",
+      "install_id": "coreutils",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "coreutils-9.11",
+      "pname": "coreutils",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:43.906386Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "9.11",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/6dkbcg1yv4z4h2md9yi5cgr8f6scsgsb-coreutils-9.11-info",
+        "out": "/nix/store/5m3k4f22kg542p2lr4ikk2xj6grlmvrg-coreutils-9.11"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "coreutils",
+      "broken": false,
+      "derivation": "/nix/store/08fg4a5d85pnlagm8qrk1pga0zkyjsxm-coreutils-9.11.drv",
+      "description": "GNU Core Utilities",
+      "install_id": "coreutils",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "coreutils-9.11",
+      "pname": "coreutils",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:53:14.963641Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "9.11",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/gfcdh00xkdhrd6qqz1gxdlq7ba5xkyaq-coreutils-9.11-debug",
+        "info": "/nix/store/77sgl4gzlhg90154z7qk1fqs2qpvsqs8-coreutils-9.11-info",
+        "out": "/nix/store/9ypz3flqsrl5xl495mm8h645gadjsxi1-coreutils-9.11"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gawk",
+      "broken": false,
+      "derivation": "/nix/store/3ngcyi3sgdczrxbs57j27kkha7mjlhaj-gawk-5.4.0.drv",
+      "description": "GNU implementation of the Awk programming language",
+      "install_id": "gawk",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gawk-5.4.0",
+      "pname": "gawk",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:19.914374Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.4.0",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/fvfirfjl84ic8l2iww2d3qpyihh2zib6-gawk-5.4.0-info",
+        "man": "/nix/store/s63g8i7i2vbsdkfzj5svgzis61ml13lk-gawk-5.4.0-man",
+        "out": "/nix/store/af7n5cc4bzd9c6mwsgh7sfmcbasjr5kd-gawk-5.4.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gawk",
+      "broken": false,
+      "derivation": "/nix/store/qspl8if8hzkywssbiwdzygkbp6fkxnwb-gawk-5.4.0.drv",
+      "description": "GNU implementation of the Awk programming language",
+      "install_id": "gawk",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gawk-5.4.0",
+      "pname": "gawk",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:44.641973Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.4.0",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/idsdr737yjda3ylziway425n3934qlj5-gawk-5.4.0-info",
+        "man": "/nix/store/9qyf72pwh4j6c3b6lbfy6rmjiil6d5ns-gawk-5.4.0-man",
+        "out": "/nix/store/nrjma0cjf0w66v99chkyayr3lh70q9yp-gawk-5.4.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gcc",
+      "broken": false,
+      "derivation": "/nix/store/s98j0lrk70winmakb0slz06lm6g9jkpj-gcc-wrapper-15.2.0.drv",
+      "description": "GNU Compiler Collection, version 15.2.0 (wrapper script)",
+      "install_id": "gcc",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gcc-wrapper-15.2.0",
+      "pname": "gcc",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:46:52.429441Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "15.2.0",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/y01as0p9m8ksp0gw07fkcfyc7ys5j515-gcc-wrapper-15.2.0-info",
+        "man": "/nix/store/ix6iqra08cyg0x3lcd671cimz2kk5bdk-gcc-wrapper-15.2.0-man",
+        "out": "/nix/store/vsj0kl98ggilv1nq2gvxwrk12w2lgvjy-gcc-wrapper-15.2.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gcc",
+      "broken": false,
+      "derivation": "/nix/store/y7wnv3kycy9gpxzwmny1sppi7il9i31a-gcc-wrapper-15.2.0.drv",
+      "description": "GNU Compiler Collection, version 15.2.0 (wrapper script)",
+      "install_id": "gcc",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gcc-wrapper-15.2.0",
+      "pname": "gcc",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:53:16.181338Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "15.2.0",
+      "outputs_to_install": [
+        "man",
+        "man",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/5b0hplrl0n9g159mcis4jca1fjd4822a-gcc-wrapper-15.2.0-info",
+        "man": "/nix/store/r35yg8h1w630r3lmnyglwhv5nvk284mx-gcc-wrapper-15.2.0-man",
+        "out": "/nix/store/788mx070y81zjlg5ipcl0cra3afviw9k-gcc-wrapper-15.2.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnumake",
+      "broken": false,
+      "derivation": "/nix/store/sywyz1ykchhvm940gw5zka1rssbvd7fr-gnumake-4.4.1.drv",
+      "description": "Tool to control the generation of non-source files from sources",
+      "install_id": "gnumake",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gnumake-4.4.1",
+      "pname": "gnumake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:20.156618Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.4.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/sl2ygvgjg4ml8dhyfxj5kh84x2bs1mhc-gnumake-4.4.1-doc",
+        "info": "/nix/store/6dbp1ysgxsrrn7xgjgf523faqrm605a5-gnumake-4.4.1-info",
+        "man": "/nix/store/wdm9prq35jlgwq6rjyhqxy4jzy833sfr-gnumake-4.4.1-man",
+        "out": "/nix/store/8wwiw8pwyhrkzyq28hqzxfl4z84lks81-gnumake-4.4.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnumake",
+      "broken": false,
+      "derivation": "/nix/store/myv1y9k84cp6x7ys0p2cxg8avsahs9c5-gnumake-4.4.1.drv",
+      "description": "Tool to control the generation of non-source files from sources",
+      "install_id": "gnumake",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gnumake-4.4.1",
+      "pname": "gnumake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:46:53.303160Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.4.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/mdv67w2xvchbs76zjdzppdkk64z5avki-gnumake-4.4.1-debug",
+        "doc": "/nix/store/bybbj9avk3g107mwhgvkzkpm6mkbl8gv-gnumake-4.4.1-doc",
+        "info": "/nix/store/bxdqxx2q13sj15ss8z5l33jd31x55j5l-gnumake-4.4.1-info",
+        "man": "/nix/store/dg3aa71vii59scbfhi02cdxnps64x6ql-gnumake-4.4.1-man",
+        "out": "/nix/store/9ngw1ippk25jjj5fjxv36xbp6iq7rxdx-gnumake-4.4.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnumake",
+      "broken": false,
+      "derivation": "/nix/store/d58x5la2wv5jy7xm5x90ca0hb59sv922-gnumake-4.4.1.drv",
+      "description": "Tool to control the generation of non-source files from sources",
+      "install_id": "gnumake",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gnumake-4.4.1",
+      "pname": "gnumake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:44.921352Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.4.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/s9y438l347nky6rkl1wfk2y3b0d9i636-gnumake-4.4.1-doc",
+        "info": "/nix/store/apljbm6plyajbfrnwif0a2d4nx6w0cpf-gnumake-4.4.1-info",
+        "man": "/nix/store/m2ba4bwmfgh994xbg1iqm6zj1mdrq8h7-gnumake-4.4.1-man",
+        "out": "/nix/store/60y2hs45l18g56ykw9789b5vhhi2ls5q-gnumake-4.4.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnumake",
+      "broken": false,
+      "derivation": "/nix/store/071w65kmbjhwpx84fcg8xl2adw38321p-gnumake-4.4.1.drv",
+      "description": "Tool to control the generation of non-source files from sources",
+      "install_id": "gnumake",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gnumake-4.4.1",
+      "pname": "gnumake",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:53:17.119469Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.4.1",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/q683z843wi7xs96pngh1kinnx88vn2if-gnumake-4.4.1-debug",
+        "doc": "/nix/store/wxg27bzsljjw4k72m9b2v6a0fx5a68s0-gnumake-4.4.1-doc",
+        "info": "/nix/store/03d41qgjsrhcr3fzq2z99ry07rahnj0v-gnumake-4.4.1-info",
+        "man": "/nix/store/bmvqa5ym318mymhxlwwmxq8wxal958p4-gnumake-4.4.1-man",
+        "out": "/nix/store/d3bwqm6bymhy3pdgbvf7vxjqfp31m3j1-gnumake-4.4.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnused",
+      "broken": false,
+      "derivation": "/nix/store/4xsxslqxny9qlvi8hhz6qxqnsfq2bvcd-gnused-4.9.drv",
+      "description": "GNU sed, a batch stream editor",
+      "install_id": "gnused",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gnused-4.9",
+      "pname": "gnused",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:20.163818Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.9",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/xd5478k8gm67ihnsl7k314f2nb6sjsq8-gnused-4.9-info",
+        "out": "/nix/store/v1lxnb2804dgaf9sf60y6najgjs3wjsi-gnused-4.9"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnused",
+      "broken": false,
+      "derivation": "/nix/store/nbqavip3730f2bxbv4dr8mkn5rcjdsgq-gnused-4.9.drv",
+      "description": "GNU sed, a batch stream editor",
+      "install_id": "gnused",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "gnused-4.9",
+      "pname": "gnused",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:17:44.928148Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.9",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/kv2h7ilg3qs7q3z814vbmc6q2b43m7c9-gnused-4.9-info",
+        "out": "/nix/store/cvkh602mhz8jyq4hnajkkm22xbyc3ndg-gnused-4.9"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "libiconv",
+      "broken": false,
+      "derivation": "/nix/store/c1kiqixgnijv81jm9bz44dkzj8ssm5mj-libiconv-113.drv",
+      "description": "Iconv(3) implementation",
+      "install_id": "libiconv",
+      "license": "[ BSD-2-Clause, BSD-3-Clause, APSL-1.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "libiconv-113",
+      "pname": "libiconv",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:37.976973Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "113",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/zy85gk6dd29slqgs1i7xclvkgvhydgxg-libiconv-113-dev",
+        "out": "/nix/store/wjb6smwmv8cynnr776j01kjjzdks1863-libiconv-113"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/n01lbk31hx767blyn05q7a32hylvdp8w-openssl-3.6.2.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "openssl-3.6.2",
+      "pname": "openssl",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:50.214918Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.6.2",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/r51ad62j4z7xzqa2svcb6d1b443kphzr-openssl-3.6.2-bin",
+        "dev": "/nix/store/8g69q86jfk5rpa34gny4rh057h5yb1nw-openssl-3.6.2-dev",
+        "doc": "/nix/store/jygjy36g9lqfxvvchydd1c1zjs7pmcp1-openssl-3.6.2-doc",
+        "man": "/nix/store/f8c4k06h4kbcpdy4vbw8dq5xiypbhcfp-openssl-3.6.2-man",
+        "out": "/nix/store/a3hhkd5vzw97issax60xx47qfnkl6ddf-openssl-3.6.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/62s3ls8r70gl1x06ldcbdqv151lvprf0-openssl-3.6.2.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "openssl-3.6.2",
+      "pname": "openssl",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:47:38.858702Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.6.2",
+      "outputs_to_install": [
+        "bin",
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/qah6sg7gj1kks5qcawgkrpxlc4dlv90q-openssl-3.6.2-bin",
+        "debug": "/nix/store/csb2j07fl5qx2k5qxg0bzd2dn6d97799-openssl-3.6.2-debug",
+        "dev": "/nix/store/is2mz9ln2mszv2fl59wg5rr7casdqyk5-openssl-3.6.2-dev",
+        "doc": "/nix/store/a3ww9j6xvhxbiadfhqspd9pbanax7mda-openssl-3.6.2-doc",
+        "man": "/nix/store/6lam03sf9sngz205fmjvlnwapj0dkha3-openssl-3.6.2-man",
+        "out": "/nix/store/bl7rmhhsy7vjb9qm3jfwgqpv3cn7wfb1-openssl-3.6.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/4qidwgbh2fmc9fnbv0riyplvhfirakbp-openssl-3.6.2.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "openssl-3.6.2",
+      "pname": "openssl",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:18:15.059347Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.6.2",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/yvchmpk2820sv464gn31gh606yj3iwaj-openssl-3.6.2-bin",
+        "dev": "/nix/store/344ipmn38akr4xfnfccbpvh5d54sjjnn-openssl-3.6.2-dev",
+        "doc": "/nix/store/sa017appbz8cy3lyvjc99m0y285axdas-openssl-3.6.2-doc",
+        "man": "/nix/store/z7c44v0zyydx17r50k0jlp3cw7z9pdvw-openssl-3.6.2-man",
+        "out": "/nix/store/ly6s18plvybyggy2m862bkdg3ghghx2j-openssl-3.6.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "openssl",
+      "broken": false,
+      "derivation": "/nix/store/j6051591glvhbf9dqpyiwr1d3cxckf82-openssl-3.6.2.drv",
+      "description": "Cryptographic library that implements the SSL and TLS protocols",
+      "install_id": "openssl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "openssl-3.6.2",
+      "pname": "openssl",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:54:06.681896Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.6.2",
+      "outputs_to_install": [
+        "bin",
+        "bin",
+        "bin",
+        "bin",
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/zyrxhd7nwmkcs11m144jagxcmddw2i41-openssl-3.6.2-bin",
+        "debug": "/nix/store/bw61f4m3imcwdwpc8011rj9db6pmkfdl-openssl-3.6.2-debug",
+        "dev": "/nix/store/wxws7pwyzk8mbmjc1rwwwx9v184hh67v-openssl-3.6.2-dev",
+        "doc": "/nix/store/davd7p64vvlg309ydxws2xc7z0ck9vvv-openssl-3.6.2-doc",
+        "man": "/nix/store/lnqjx5rpvid4ancfjxln38bwswmpvg8y-openssl-3.6.2-man",
+        "out": "/nix/store/y18pnbvfarnilsmgayswvi1khaw9wbsc-openssl-3.6.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "pkg-config",
+      "broken": false,
+      "derivation": "/nix/store/byk6xh9qr0y4wrpyf11z29as4zfvl6h4-pkg-config-wrapper-0.29.2.drv",
+      "description": "Tool that allows packages to find out information about other packages (wrapper script)",
+      "install_id": "pkg-config",
+      "license": "GPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "pkg-config-wrapper-0.29.2",
+      "pname": "pkg-config",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:14:59.571897Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.29.2",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/29wlw531i4q0da4maa5bab1hy8p58d6v-pkg-config-wrapper-0.29.2-doc",
+        "man": "/nix/store/pk37i8cqgq803ni2gc7fx8j8dmnlq4hz-pkg-config-wrapper-0.29.2-man",
+        "out": "/nix/store/lzrwr375jqhhbca116kja96xf1md83l8-pkg-config-wrapper-0.29.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "pkg-config",
+      "broken": false,
+      "derivation": "/nix/store/wybh89fsyj0rd2aq2pfg9h3p2q211g4m-pkg-config-wrapper-0.29.2.drv",
+      "description": "Tool that allows packages to find out information about other packages (wrapper script)",
+      "install_id": "pkg-config",
+      "license": "GPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "pkg-config-wrapper-0.29.2",
+      "pname": "pkg-config",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:47:51.242841Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.29.2",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/h67f59js5mciz53frb0m71jlbzkvv0y2-pkg-config-wrapper-0.29.2-doc",
+        "man": "/nix/store/wg08qnsfqmyy5mgx74jiid7h1bnv8a8b-pkg-config-wrapper-0.29.2-man",
+        "out": "/nix/store/c7vwy0gl1q0agl2h22gi0m9dg7xxad2l-pkg-config-wrapper-0.29.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "pkg-config",
+      "broken": false,
+      "derivation": "/nix/store/6h29z1jjx9h3bfq95a7kfqkc9ivask4v-pkg-config-wrapper-0.29.2.drv",
+      "description": "Tool that allows packages to find out information about other packages (wrapper script)",
+      "install_id": "pkg-config",
+      "license": "GPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "pkg-config-wrapper-0.29.2",
+      "pname": "pkg-config",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:18:24.133969Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.29.2",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/lmzgf4hlx26dxbsl6hnqr0imwkygq6zb-pkg-config-wrapper-0.29.2-doc",
+        "man": "/nix/store/masw8xvkn6ygkbi35myxy0ngzxknpva6-pkg-config-wrapper-0.29.2-man",
+        "out": "/nix/store/8cs8a12z75g9lnpch92y1f7bb9kqmgrz-pkg-config-wrapper-0.29.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "pkg-config",
+      "broken": false,
+      "derivation": "/nix/store/8lx42xz31bh9294hjphn7yk5lammcaj1-pkg-config-wrapper-0.29.2.drv",
+      "description": "Tool that allows packages to find out information about other packages (wrapper script)",
+      "install_id": "pkg-config",
+      "license": "GPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "pkg-config-wrapper-0.29.2",
+      "pname": "pkg-config",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:54:19.769811Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.29.2",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/lghsjphn6xrfac5q2zqnbbxvrmj6c3s7-pkg-config-wrapper-0.29.2-doc",
+        "man": "/nix/store/6ki0phq7gff15ywxghxbhpcg3390x0hp-pkg-config-wrapper-0.29.2-man",
+        "out": "/nix/store/1m05k7xgfnw6jc21xxk5681ni3ar97wf-pkg-config-wrapper-0.29.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uv",
+      "broken": false,
+      "derivation": "/nix/store/k7fnp368lhw1ql10p2vqkqjwlzrc3g6c-uv-0.11.17.drv",
+      "description": "Extremely fast Python package installer and resolver, written in Rust",
+      "install_id": "uv",
+      "license": "[ Apache-2.0, MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "uv-0.11.17",
+      "pname": "uv",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:17:09.668528Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.17",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/vac3cff9gy7gwsc7fkvq6xam9y6pyfis-uv-0.11.17"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uv",
+      "broken": false,
+      "derivation": "/nix/store/d3nq0hhvi43iiin5la59gq276n0449q4-uv-0.11.17.drv",
+      "description": "Extremely fast Python package installer and resolver, written in Rust",
+      "install_id": "uv",
+      "license": "[ Apache-2.0, MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "uv-0.11.17",
+      "pname": "uv",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T03:50:27.899428Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.17",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/44ca5s53vkly9vz5rmb6f9m4v562ilqj-uv-0.11.17"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uv",
+      "broken": false,
+      "derivation": "/nix/store/ffg3gnl3l1f4sw9ycf7hmkjw2qihqjif-uv-0.11.17.drv",
+      "description": "Extremely fast Python package installer and resolver, written in Rust",
+      "install_id": "uv",
+      "license": "[ Apache-2.0, MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "uv-0.11.17",
+      "pname": "uv",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:20:24.532193Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.17",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/qnird3c2xrh089mwjir4hb756awibiiz-uv-0.11.17"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uv",
+      "broken": false,
+      "derivation": "/nix/store/9nkqj17z92791xrg3vjg9laidl384q6a-uv-0.11.17.drv",
+      "description": "Extremely fast Python package installer and resolver, written in Rust",
+      "install_id": "uv",
+      "license": "[ Apache-2.0, MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "name": "uv-0.11.17",
+      "pname": "uv",
+      "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+      "rev_count": 1011622,
+      "rev_date": "2026-06-06T12:30:50Z",
+      "scrape_date": "2026-06-08T04:57:09.070553Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.17",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9yd6g2f18vlqqmj38rdgm3ih5q8022d4-uv-0.11.17"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python3Packages.torch",
+      "broken": false,
+      "derivation": "/nix/store/myjfjpc31pcif1idswiffpwsbbwxwjkb-python3.13-torch-2.10.0.drv",
+      "description": "PyTorch: Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "install_id": "torch-cuda",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "name": "python3.13-torch-2.10.0",
+      "pname": "torchWithCuda",
+      "rev": "6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "rev_count": 967235,
+      "rev_date": "2026-03-21T15:16:39Z",
+      "scrape_date": "2026-06-15T20:25:03.117229365Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3.13-torch-2.10.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "cxxdev": "/nix/store/750bf106crl7p4fnw5f2qmj2k8kdpmhx-python3.13-torch-2.10.0-cxxdev",
+        "dev": "/nix/store/ah09a043flq3d4ssr69gcly3xr3jq82p-python3.13-torch-2.10.0-dev",
+        "dist": "/nix/store/xa2ihzf7nmank01w90aw5f6gd0x89ymh-python3.13-torch-2.10.0-dist",
+        "lib": "/nix/store/19fa8v5p9n4x59v8652n7y6q9xxmqqhl-python3.13-torch-2.10.0-lib",
+        "out": "/nix/store/3yiici44dm1w5dyajp89wvvf6iw4zh7l-python3.13-torch-2.10.0"
+      },
+      "system": "aarch64-linux",
+      "group": "torch-cuda",
+      "priority": 0
+    },
+    {
+      "attr_path": "python3Packages.torch",
+      "broken": false,
+      "derivation": "/nix/store/ajyxli1a8zqr0s1nyfa1kmghzpkbf74z-python3.13-torch-2.10.0.drv",
+      "description": "PyTorch: Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "install_id": "torch-cuda",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "name": "python3.13-torch-2.10.0",
+      "pname": "torchWithCuda",
+      "rev": "6c9a78c09ff4d6c21d0319114873508a6ec01655",
+      "rev_count": 967235,
+      "rev_date": "2026-03-21T15:16:39Z",
+      "scrape_date": "2026-06-15T20:25:03.117229925Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3.13-torch-2.10.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "cxxdev": "/nix/store/3sw0gzpdwk2jp7kh4hhy69v75lzjfvdn-python3.13-torch-2.10.0-cxxdev",
+        "dev": "/nix/store/ncv0z35hl0l9qnnycbk3hrj1gmipnn4g-python3.13-torch-2.10.0-dev",
+        "dist": "/nix/store/j5722dz15mxwzv81h0amcv3py5nhwsyc-python3.13-torch-2.10.0-dist",
+        "lib": "/nix/store/rs78ghvaf9d4xf27wcd6pfl63nqz6q7d-python3.13-torch-2.10.0-lib",
+        "out": "/nix/store/qhc7ddf7zh8r35nqa37wgyphsfqf232i-python3.13-torch-2.10.0"
+      },
+      "system": "x86_64-linux",
+      "group": "torch-cuda",
+      "priority": 0
+    },
+    {
+      "attr_path": "python313Packages.torch",
+      "broken": false,
+      "derivation": "/nix/store/isxyxslzwvc60jcd97y3b121bcar1f93-python3.13-torch-2.10.0.drv",
+      "description": "PyTorch: Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "install_id": "torch-darwin",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
+      "name": "python3.13-torch-2.10.0",
+      "pname": "torch",
+      "rev": "46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
+      "rev_count": 969196,
+      "rev_date": "2026-03-24T21:09:33Z",
+      "scrape_date": "2026-03-27T03:39:23.793819Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.10.0",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "cxxdev": "/nix/store/psb34xh9h3c60vwshm2g1rhpcwfqp86w-python3.13-torch-2.10.0-cxxdev",
+        "dev": "/nix/store/9vz7vg9fgb3qqlscmgl271n1927qanjc-python3.13-torch-2.10.0-dev",
+        "dist": "/nix/store/7x3dngrj8zd709v9z57rikj5by7iiq0p-python3.13-torch-2.10.0-dist",
+        "lib": "/nix/store/82kc7vk6ym5maq3b4h2v831qzk08rg41-python3.13-torch-2.10.0-lib",
+        "out": "/nix/store/aaxmsi2wlwknwdj96fnxqd9if4hswiv5-python3.13-torch-2.10.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "torch-darwin",
+      "priority": 1
+    }
+  ],
+  "compose": {
+    "composer": {
+      "schema-version": "1.12.0",
+      "install": {
+        "uv": {
+          "pkg-path": "uv"
+        }
+      },
+      "vars": {
+        "ML_TRAINING_VENV": "$FLOX_ENV_CACHE/venv",
+        "PIP_CACHE_DIR": "$FLOX_ENV_CACHE/pip",
+        "UV_CACHE_DIR": "$FLOX_ENV_CACHE/uv"
+      },
+      "hook": {
+        "on-activate": "  ml_training_setup() {\n    venv=\"$FLOX_ENV_CACHE/venv\"\n    if [ ! -d \"$venv\" ]; then\n      uv venv \"$venv\" --python python3\n    fi\n    if [ -f \"$venv/bin/activate\" ]; then\n      source \"$venv/bin/activate\"\n    fi\n    if [ ! -f \"$FLOX_ENV_CACHE/.training_deps_installed\" ]; then\n      uv pip install --python \"$venv/bin/python\" --quiet \\\n        numpy datasets tokenizers transformers accelerate \\\n        safetensors tensorboard scikit-learn tqdm pyyaml \\\n        fastapi uvicorn\n      touch \"$FLOX_ENV_CACHE/.training_deps_installed\"\n    fi\n  }\n  ml_training_setup\n"
+      },
+      "options": {},
+      "include": {
+        "environments": [
+          {
+            "remote": "flox-labs/build-env"
+          },
+          {
+            "remote": "flox-labs/cuda-dev-essentials"
+          },
+          {
+            "remote": "flox-labs/pytorch-runtime"
+          }
+        ]
+      }
+    },
+    "include": [
+      {
+        "manifest": {
+          "schema-version": "1.12.0",
+          "install": {
+            "bash": {
+              "pkg-path": "bash"
+            },
+            "cacert": {
+              "pkg-path": "cacert"
+            },
+            "clang": {
+              "pkg-path": "clang",
+              "systems": [
+                "x86_64-darwin",
+                "aarch64-darwin"
+              ]
+            },
+            "cmake": {
+              "pkg-path": "cmake"
+            },
+            "coreutils": {
+              "pkg-path": "coreutils"
+            },
+            "gawk": {
+              "pkg-path": "gawk",
+              "systems": [
+                "x86_64-darwin",
+                "aarch64-darwin"
+              ]
+            },
+            "gcc": {
+              "pkg-path": "gcc",
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "gcc-unwrapped": {
+              "pkg-path": "gcc-unwrapped",
+              "pkg-group": "libraries",
+              "priority": 3,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "glibc": {
+              "pkg-path": "glibc",
+              "pkg-group": "glibc",
+              "version": "2.38-44",
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "gnumake": {
+              "pkg-path": "gnumake"
+            },
+            "gnused": {
+              "pkg-path": "gnused",
+              "systems": [
+                "x86_64-darwin",
+                "aarch64-darwin"
+              ]
+            },
+            "libiconv": {
+              "pkg-path": "libiconv",
+              "systems": [
+                "aarch64-darwin"
+              ]
+            },
+            "openssl": {
+              "pkg-path": "openssl"
+            },
+            "pkg-config": {
+              "pkg-path": "pkg-config"
+            }
+          },
+          "options": {}
+        },
+        "name": "build-env",
+        "descriptor": {
+          "remote": "flox-labs/build-env"
+        }
+      },
+      {
+        "manifest": {
+          "schema-version": "1.12.0",
+          "install": {
+            "cuda_cudart": {
+              "pkg-path": "flox-cuda/cudaPackages.cuda_cudart",
+              "pkg-group": "cuda",
+              "priority": 2,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cuda_cupti": {
+              "pkg-path": "flox-cuda/cudaPackages.cuda_cupti",
+              "pkg-group": "cuda",
+              "priority": 6,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cuda_gdb": {
+              "pkg-path": "flox-cuda/cudaPackages.cuda_gdb",
+              "pkg-group": "cuda",
+              "priority": 7,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cuda_nvcc": {
+              "pkg-path": "flox-cuda/cudaPackages.cuda_nvcc",
+              "pkg-group": "cuda",
+              "priority": 1,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cuda_sanitizer_api": {
+              "pkg-path": "flox-cuda/cudaPackages.cuda_sanitizer_api",
+              "pkg-group": "cuda",
+              "priority": 8,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cudatoolkit": {
+              "pkg-path": "flox-cuda/cudaPackages.cudatoolkit",
+              "pkg-group": "cuda",
+              "priority": 3,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cudnn": {
+              "pkg-path": "flox-cuda/cudaPackages.cudnn",
+              "pkg-group": "cudnn",
+              "priority": 5,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "cutensor": {
+              "pkg-path": "flox-cuda/cudaPackages.cutensor",
+              "pkg-group": "cutensor",
+              "priority": 10,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "libcublas": {
+              "pkg-path": "flox-cuda/cudaPackages.libcublas",
+              "pkg-group": "cuda",
+              "priority": 4,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "nccl": {
+              "pkg-path": "flox-cuda/cudaPackages.nccl",
+              "pkg-group": "cuda",
+              "priority": 9,
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            }
+          },
+          "vars": {
+            "CUDA_ENV_VERSION": "12.9"
+          },
+          "options": {}
+        },
+        "name": "cuda-dev-essentials",
+        "descriptor": {
+          "remote": "flox-labs/cuda-dev-essentials"
+        }
+      },
+      {
+        "manifest": {
+          "schema-version": "1.12.0",
+          "install": {
+            "python": {
+              "pkg-path": "python3",
+              "pkg-group": "runtime",
+              "priority": 5,
+              "version": "3.13.12",
+              "outputs": "all"
+            },
+            "torch-cuda": {
+              "pkg-path": "flox-cuda/python3Packages.torch",
+              "pkg-group": "torch-cuda",
+              "priority": 0,
+              "version": "python3.13-torch-2.10.0",
+              "systems": [
+                "aarch64-linux",
+                "x86_64-linux"
+              ]
+            },
+            "torch-darwin": {
+              "pkg-path": "python313Packages.torch",
+              "pkg-group": "torch-darwin",
+              "priority": 1,
+              "version": "2.10.0",
+              "systems": [
+                "aarch64-darwin"
+              ]
+            }
+          },
+          "options": {}
+        },
+        "name": "pytorch-runtime",
+        "descriptor": {
+          "remote": "flox-labs/pytorch-runtime"
+        }
+      }
+    ],
+    "warnings": []
+  }
+}

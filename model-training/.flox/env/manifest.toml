@@ -1,0 +1,37 @@
+schema-version = "1.12.0"
+
+[install]
+uv.pkg-path = "uv"
+
+[vars]
+ML_TRAINING_VENV = "$FLOX_ENV_CACHE/venv"
+UV_CACHE_DIR = "$FLOX_ENV_CACHE/uv"
+PIP_CACHE_DIR = "$FLOX_ENV_CACHE/pip"
+
+[hook]
+on-activate = '''
+  ml_training_setup() {
+    venv="$FLOX_ENV_CACHE/venv"
+    if [ ! -d "$venv" ]; then
+      uv venv "$venv" --python python3
+    fi
+    if [ -f "$venv/bin/activate" ]; then
+      source "$venv/bin/activate"
+    fi
+    if [ ! -f "$FLOX_ENV_CACHE/.training_deps_installed" ]; then
+      uv pip install --python "$venv/bin/python" --quiet \
+        numpy datasets tokenizers transformers accelerate \
+        safetensors tensorboard scikit-learn tqdm pyyaml \
+        fastapi uvicorn
+      touch "$FLOX_ENV_CACHE/.training_deps_installed"
+    fi
+  }
+  ml_training_setup
+'''
+
+[include]
+environments = [
+    { remote = "flox-labs/build-env" },
+    { remote = "flox-labs/cuda-dev-essentials" },
+    { remote = "flox-labs/pytorch-runtime" }
+]

@@ -1,0 +1,65 @@
+schema-version = "1.12.0"
+
+[install]
+cuda_nvcc.pkg-path = "flox-cuda/cudaPackages.cuda_nvcc"
+cuda_nvcc.pkg-group = "cuda"
+cuda_nvcc.systems = ["aarch64-linux", "x86_64-linux"]
+cuda_nvcc.priority = 1
+ 
+# CUDA runtime API
+cuda_cudart.pkg-path = "flox-cuda/cudaPackages.cuda_cudart"
+cuda_cudart.pkg-group = "cuda"
+cuda_cudart.systems = ["aarch64-linux", "x86_64-linux"]
+cuda_cudart.priority = 2
+ 
+# CUDA toolkit (core libs only)
+cudatoolkit.pkg-path = "flox-cuda/cudaPackages.cudatoolkit"
+cudatoolkit.pkg-group = "cuda"
+cudatoolkit.systems = ["aarch64-linux", "x86_64-linux"]
+cudatoolkit.priority = 3
+ 
+# CUDA Basic Linear Algebra Subroutines
+libcublas.pkg-path = "flox-cuda/cudaPackages.libcublas"
+libcublas.pkg-group = "cuda"
+libcublas.systems = ["aarch64-linux", "x86_64-linux"]
+libcublas.priority = 4
+ 
+# GPU-accelerated deep neural network primitives
+cudnn.pkg-path = "flox-cuda/cudaPackages.cudnn"
+cudnn.pkg-group = "cudnn"
+cudnn.systems = ["aarch64-linux", "x86_64-linux"]
+cudnn.priority = 5
+ 
+# Profiling API
+cuda_cupti.pkg-path = "flox-cuda/cudaPackages.cuda_cupti"
+cuda_cupti.pkg-group = "cuda"
+cuda_cupti.systems = ["aarch64-linux", "x86_64-linux"]
+cuda_cupti.priority = 6
+ 
+# GPU debugger
+cuda_gdb.pkg-path = "flox-cuda/cudaPackages.cuda_gdb"
+cuda_gdb.pkg-group = "cuda"
+cuda_gdb.systems = ["aarch64-linux", "x86_64-linux"]
+cuda_gdb.priority = 7
+ 
+# Memory/race sanitizer
+cuda_sanitizer_api.pkg-path = "flox-cuda/cudaPackages.cuda_sanitizer_api"
+cuda_sanitizer_api.pkg-group = "cuda"
+cuda_sanitizer_api.systems = ["aarch64-linux", "x86_64-linux"]
+cuda_sanitizer_api.priority = 8
+ 
+# Multi-GPU/multi-node communication
+nccl.pkg-path = "flox-cuda/cudaPackages.nccl"
+nccl.pkg-group = "cuda"
+nccl.systems = ["aarch64-linux", "x86_64-linux"]
+nccl.priority = 9
+ 
+# High-performance tensor primitives
+cutensor.pkg-path = "flox-cuda/cudaPackages.cutensor"
+cutensor.pkg-group = "cutensor"
+cutensor.systems = ["aarch64-linux", "x86_64-linux"]
+cutensor.priority = 10
+ 
+ 
+[vars]
+CUDA_ENV_VERSION = "12.9"
