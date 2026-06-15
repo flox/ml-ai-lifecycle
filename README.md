@@ -12,9 +12,6 @@ upward. Each can be used standalone or pulled in as a dependency.
 
 ```
 ┌─────────────────────────────────────────────┐
-│  nanogpt-slurm        Tutorial: train GPT   │
-│                        on a Slurm cluster    │
-├─────────────────────────────────────────────┤
 │  model-training       Composed ML training   │
 │                        environment           │
 ├──────────┬──────────────────┬───────────────┤
@@ -49,12 +46,11 @@ Composed environment that pulls in `build-env`, `cuda-dev-essentials`, and
 ML training dependencies (datasets, transformers, accelerate, etc.). This is the
 environment you'd point a training job at.
 
-### [`nanogpt-slurm`](nanogpt-slurm/)
+### [nanogpt-slurm](https://github.com/flox/nanogpt-slurm) (separate repo)
 
 End-to-end tutorial: train a GPT language model on a Slurm cluster using the
 `model-training` environment. Includes Slurm job scripts for data prep,
-training, sampling, and evaluation. See its own
-[README](nanogpt-slurm/README.md).
+training, sampling, and evaluation.
 
 ## Using with Flox
 
@@ -95,7 +91,7 @@ The `model-training` flake pulls in the other three as inputs with
 | `cuda-dev-essentials` | `flox-labs/cuda-dev-essentials` | `?dir=cuda-dev-essentials` | CUDA 12.9 (nvcc, cudnn, nccl, cublas) |
 | `pytorch-runtime` | `flox-labs/pytorch-runtime` | `?dir=pytorch-runtime` | Python 3.13, PyTorch (CUDA on Linux) |
 | `model-training` | `flox-labs/model-training` | `?dir=model-training` | All of the above + uv, datasets, transformers |
-| `nanogpt-slurm` | — | — | Slurm job scripts (uses `model-training`) |
+| [`nanogpt-slurm`](https://github.com/flox/nanogpt-slurm) | — | — | Slurm job scripts (uses `model-training`) |
 
 ## Platform Support
 
