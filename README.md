@@ -54,7 +54,7 @@ environment you'd point a training job at.
 End-to-end tutorial: train a GPT language model on a Slurm cluster using the
 `model-training` environment. Includes Slurm job scripts for data prep,
 training, sampling, and evaluation. See its own
-[README](nanogpt-slurm/README.md) and [SETUP.md](nanogpt-slurm/SETUP.md).
+[README](nanogpt-slurm/README.md).
 
 ## Using with Flox
 
