@@ -1,5 +1,5 @@
 {
-  description = "ML training environment comparable to the composed Flox environment";
+  description = "ML training environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -37,25 +37,43 @@
         "aarch64-darwin"
       ];
 
-      linuxSystems = [
+      cudaSystems = [
         "x86_64-linux"
-        "aarch64-linux"
+
+        # Add after testing on your target fleet:
+        # "aarch64-linux"
       ];
 
       forAllSystems = f:
         lib.genAttrs systems f;
 
+      isCudaSystem = system:
+        builtins.elem system cudaSystems;
+
       pkgsFor = system:
         import nixpkgs {
           inherit system;
-          config = {
-            allowUnfree = true;
-            cudaSupport = isLinux system;
-          };
-        };
 
-      isLinux = system:
-        builtins.elem system linuxSystems;
+          config =
+            {
+              # Tutorial setting. Production configs can use
+              # allowUnfreePredicate for a narrower unfree-package policy.
+              allowUnfree = true;
+            }
+            // lib.optionalAttrs (isCudaSystem system) {
+              # CUDA is selected at package-set import time.
+              cudaSupport = true;
+
+              # Optional: tune this list to the GPUs in your Slurm fleet.
+              #
+              # A100: cudaCapabilities = [ "8.0" ];
+              # RTX 4090 / RTX 6000 Ada: cudaCapabilities = [ "8.9" ];
+              # H100: cudaCapabilities = [ "9.0" ];
+              #
+              # Mixed fleet example:
+              # cudaCapabilities = [ "8.0" "8.9" "9.0" ];
+            };
+        };
 
       getPackage = flake: system: name:
         if builtins.hasAttr "packages" flake
@@ -78,8 +96,38 @@
             getPackage pytorch-runtime system "runtime";
 
           cudaTools =
-            lib.optionals (isLinux system) [
+            lib.optionals (isCudaSystem system) [
               (getPackage cuda-dev-essentials system "default")
+            ];
+
+          cudaPkgs =
+            pkgs.cudaPackages;
+
+          cudaRuntimeLibs =
+            lib.optionals (isCudaSystem system) [
+              pkgs.stdenv.cc.cc.lib
+              cudaPkgs.cuda_cudart
+              cudaPkgs.libcublas
+              cudaPkgs.cudnn
+              cudaPkgs.cuda_cupti
+              cudaPkgs.nccl
+            ];
+
+          cudaIncludeDirs =
+            lib.optionals (isCudaSystem system) [
+              "${cudaPkgs.cuda_cudart}/include"
+              "${cudaPkgs.libcublas}/include"
+              "${cudaPkgs.cudnn}/include"
+              "${cudaPkgs.nccl}/include"
+            ];
+
+          cudaLibraryDirs =
+            lib.optionals (isCudaSystem system) [
+              "${cudaPkgs.cuda_cudart}/lib"
+              "${cudaPkgs.libcublas}/lib"
+              "${cudaPkgs.cudnn}/lib"
+              "${cudaPkgs.cuda_cupti}/lib"
+              "${cudaPkgs.nccl}/lib"
             ];
         in
         {
@@ -100,17 +148,14 @@
               export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
               export NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
             ''
-            + lib.optionalString (isLinux system) (
-              let cudaPkgs = pkgs.cudaPackages_12_9; in ''
-              export LD_LIBRARY_PATH=${pkgs.gcc-unwrapped.lib}/lib:${cudaPkgs.cuda_cudart}/lib:${cudaPkgs.libcublas}/lib:${cudaPkgs.cudnn}/lib:${cudaPkgs.cuda_cupti}/lib:${cudaPkgs.nccl}/lib:${cudaPkgs.libcutensor}/lib''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+            + lib.optionalString (isCudaSystem system) ''
+              export CUDA_HOME=${cudaPkgs.cuda_nvcc}
+              export CUDA_PATH=$CUDA_HOME
 
-              export CPATH=${cudaPkgs.cuda_cudart}/include:${cudaPkgs.libcublas}/include:${cudaPkgs.cudnn}/include:${cudaPkgs.nccl}/include:${cudaPkgs.libcutensor}/include''${CPATH:+:$CPATH}
-
-              export LIBRARY_PATH=${cudaPkgs.cuda_cudart}/lib:${cudaPkgs.libcublas}/lib:${cudaPkgs.cudnn}/lib:${cudaPkgs.cuda_cupti}/lib:${cudaPkgs.nccl}/lib:${cudaPkgs.libcutensor}/lib''${LIBRARY_PATH:+:$LIBRARY_PATH}
-
-              export CUDA_PATH=${cudaPkgs.cuda_nvcc}
-              export CUDA_HOME=$CUDA_PATH
-            '')
+              export LD_LIBRARY_PATH=${lib.makeLibraryPath cudaRuntimeLibs}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+              export CPATH=${lib.concatStringsSep ":" cudaIncludeDirs}''${CPATH:+:$CPATH}
+              export LIBRARY_PATH=${lib.concatStringsSep ":" cudaLibraryDirs}''${LIBRARY_PATH:+:$LIBRARY_PATH}
+            ''
             + ''
               export ML_TRAINING_CACHE="$PWD/.cache/ml-training"
               export ML_TRAINING_VENV="$ML_TRAINING_CACHE/venv"
@@ -120,14 +165,12 @@
               mkdir -p "$ML_TRAINING_CACHE" "$UV_CACHE_DIR" "$PIP_CACHE_DIR"
 
               ml_training_setup() {
-                set -euo pipefail
-
                 venv="$ML_TRAINING_VENV"
 
                 if [ ! -d "$venv" ]; then
                   uv venv "$venv" \
                     --python "$PYTHON_FOR_VENV" \
-                    --system-site-packages
+                    --system-site-packages || return 1
                 fi
 
                 if [ -f "$venv/bin/activate" ]; then
@@ -138,10 +181,23 @@
                   uv pip install --python "$venv/bin/python" --quiet \
                     numpy datasets tokenizers transformers accelerate \
                     safetensors tensorboard scikit-learn tqdm pyyaml \
-                    fastapi uvicorn
+                    fastapi uvicorn || return 1
 
-                  touch "$ML_TRAINING_CACHE/.training_deps_installed"
+                  touch "$ML_TRAINING_CACHE/.training_deps_installed" || return 1
                 fi
+
+                python - <<'PY'
+import torch
+
+print("torch:", torch.__version__)
+print("cuda available:", torch.cuda.is_available())
+
+if torch.cuda.is_available():
+    print("cuda device:", torch.cuda.get_device_name(0))
+
+if hasattr(torch.backends, "mps"):
+    print("mps available:", torch.backends.mps.is_available())
+PY
               }
 
               ml_training_setup
